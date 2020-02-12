@@ -156,7 +156,16 @@ function update() {
         {
             player.body.velocity.x = 200;
         }
-
+        //new code
+        else if (cursors.up.isDown)
+        {
+            player.body.velocity.y = 200;
+        }
+        else if (cursors.down.isDown)
+        {
+            player.body.velocity.y = -200;
+        }
+        
         //  Firing?
         if (fireButton.isDown)
         {
@@ -270,7 +279,7 @@ function enemyFires () {
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
         game.physics.arcade.moveToObject(enemyBullet,player,120);
-        firingTimer = game.time.now + 500;
+        firingTimer = game.time.now + 100;
     }
 
 }
@@ -288,7 +297,7 @@ function fireBullet () {
             //  And fire it
             bullet.reset(player.x, player.y + 8);
             bullet.body.velocity.y = -500;
-            bulletTime = game.time.now + 500;
+            bulletTime = game.time.now + 1000;
         }
     }
 
