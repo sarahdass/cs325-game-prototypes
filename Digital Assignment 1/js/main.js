@@ -4,7 +4,7 @@ function preload() {
 
     game.load.image('bullet', 'assets/smallarrow.png');
     game.load.image('enemyBullet', 'assets/invaders/enemy-bullet.png');
-    game.load.spritesheet('invader', 'assets/invaders/invader32x32x4.png', 32, 32);
+    game.load.spritesheet('invader', 'assets/ghostIce_all.png', 32, 32);
     game.load.image('ship', 'assets/invaders/player.png');
     game.load.spritesheet('kaboom', 'assets/invaders/explode.png', 128, 128);
     game.load.image('starfield', 'assets/invaders/starfield.png');
