@@ -1,4 +1,4 @@
-"EnemyTank = function (index, game, player, bullets) {
+EnemyTank = function (index, game, player, bullets) {
 
     var x = game.world.randomX;
     var y = game.world.randomY;
