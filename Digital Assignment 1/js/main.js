@@ -3,7 +3,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: p
 function preload() {
 
     game.load.image('bullet', 'assets/smallarrow.png');
-    game.load.image('enemyBullet', 'assets/invaders/enemy-bullet.png');
+    game.load.spritesheet('enemyBullet', 'assets/ball.png', 58, 75);
     game.load.spritesheet('invader', 'assets/ghostIce_all.png', 32, 32);
     game.load.image('ship', 'assets/invaders/player.png');
     game.load.spritesheet('kaboom', 'assets/invaders/explode.png', 128, 128);
@@ -41,6 +41,8 @@ function create() {
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
     bullets.createMultiple(30, 'bullet');
+    bullets.animations.add('shoot', [1,2,3], 10, true);
+    bullet.play('shoot'); //new code
     bullets.setAll('anchor.x', 0.5);
     bullets.setAll('anchor.y', 1);
     bullets.setAll('outOfBoundsKill', true);
@@ -50,6 +52,7 @@ function create() {
     enemyBullets = game.add.group();
     enemyBullets.enableBody = true;
     enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    
     enemyBullets.createMultiple(30, 'enemyBullet');
     enemyBullets.setAll('anchor.x', 0.5);
     enemyBullets.setAll('anchor.y', 1);
