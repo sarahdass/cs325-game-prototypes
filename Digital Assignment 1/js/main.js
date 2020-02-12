@@ -80,7 +80,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: p
 
 function preload () {
 
-    game.load.atlas('tank', 'assets/catrunx4.gif');// 'assets/tanks/tanks.json');
+    game.load.spritesheet('tank', 'assets/cat_idle.png');// 'assets/tanks/tanks.json');
     game.load.atlas('enemy', 'assets/tanks/enemy-tanks.png', 'assets/tanks/tanks.json');
     game.load.image('logo', 'assets/tanks/logo.png');
     game.load.image('bullet', 'assets/tanks/bullet.png');
