@@ -1,148 +1,161 @@
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
 
-var GameState = function(game) {
-};
+function preload () {
 
-// Load images and sounds
-GameState.prototype.preload = function() {
-    this.game.load.image('ground', '/assets/pic.png');
-    this.game.load.spritesheet('player', '/assets/cat_idle.png', 64,64);
-};
+    game.load.image('player', 'assets/defender/ship.png');
+    game.load.image('star', 'assets/demoscene/star2.png');
+    game.load.image('baddie', 'assets/sprites/space-baddie.png');
+    game.load.atlas('lazer', 'assets/defender/laser.png', 'assets/games/defender/laser.json');
 
-// Setup the example
-GameState.prototype.create = function() {
-    // Set stage background to something sky colored
-    this.game.stage.backgroundColor = 0x4488cc;
+}
 
-    // Define movement constants
-    this.MAX_SPEED = 500; // pixels/second
-    this.ACCELERATION = 1500; // pixels/second/second
-    this.DRAG = 600; // pixels/second
-    this.GRAVITY = 2600; // pixels/second/second
-    this.JUMP_SPEED = -1000; // pixels/second (negative y is up)
+var stars;
+var baddies;
+var lazers;
+var player;
+var cursors;
+var fireButton;
+var bulletTime = 0;
+var frameTime = 0;
+var frames;
+var prevCamX = 0;
 
-    // Create a player sprite
-    this.player = this.game.add.sprite(this.game.width/2, this.game.height - 64, 'player');
+function create () {
 
-    // Enable physics on the player
-    this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
+    game.world.setBounds(0, 0, 800*4, 600);
 
-    // Make player collide with world boundaries so he doesn't leave the stage
-    this.player.body.collideWorldBounds = true;
+    frames = Phaser.Animation.generateFrameNames('frame', 2, 30, '', 2);
+    frames.unshift('frame02');
 
-    // Set player minimum and maximum movement speed
-    this.player.body.maxVelocity.setTo(this.MAX_SPEED, this.MAX_SPEED * 10); // x, y
+    stars = game.add.group();
 
-    // Add drag to the player that slows them down when they are not accelerating
-    this.player.body.drag.setTo(this.DRAG, 0); // x, y
-
-    // Since we're jumping we need gravity
-    game.physics.arcade.gravity.y = this.GRAVITY;
-
-    // Create some ground for the player to walk on
-    this.ground = this.game.add.group();
-    for(var x = 0; x < this.game.width; x += 32) {
-        // Add the ground blocks, enable physics on each, make them immovable
-        var groundBlock = this.game.add.sprite(x, this.game.height - 32, 'ground');
-        this.game.physics.enable(groundBlock, Phaser.Physics.ARCADE);
-        groundBlock.body.immovable = true;
-        groundBlock.body.allowGravity = false;
-        this.ground.add(groundBlock);
+    for (var i = 0; i < 128; i++)
+    {
+        stars.create(game.world.randomX, game.world.randomY, 'star');
     }
 
-    // Capture certain keys to prevent their default actions in the browser.
-    // This is only necessary because this is an HTML5 game. Games on other
-    // platforms may not need code like this.
-    this.game.input.keyboard.addKeyCapture([
-        Phaser.Keyboard.LEFT,
-        Phaser.Keyboard.RIGHT,
-        Phaser.Keyboard.UP,
-        Phaser.Keyboard.DOWN
-    ]);
+    baddies = game.add.group();
 
-    // Just for fun, draw some height markers so we can see how high we're jumping
-    this.drawHeightMarkers();
-};
-
-// This function draws horizontal lines across the stage
-GameState.prototype.drawHeightMarkers = function() {
-    // Create a bitmap the same size as the stage
-    var bitmap = this.game.add.bitmapData(this.game.width, this.game.height);
-
-    // These functions use the canvas context to draw lines using the canvas API
-    for(y = this.game.height-32; y >= 64; y -= 32) {
-        bitmap.context.beginPath();
-        bitmap.context.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-        bitmap.context.moveTo(0, y);
-        bitmap.context.lineTo(this.game.width, y);
-        bitmap.context.stroke();
+    for (var i = 0; i < 16; i++)
+    {
+        baddies.create(game.world.randomX, game.world.randomY, 'baddie');
     }
 
-    this.game.add.image(0, 0, bitmap);
-};
+    lazers = game.add.group();
 
-// The update() method is called every frame
-GameState.prototype.update = function() {
-    // Collide the player with the ground
-    this.game.physics.arcade.collide(this.player, this.ground);
+    player = game.add.sprite(100, 300, 'player');
+    player.anchor.x = 0.5;
 
-    if (this.leftInputIsActive()) {
-        // If the LEFT key is down, set the player velocity to move left
-        this.player.body.acceleration.x = -this.ACCELERATION;
-    } else if (this.rightInputIsActive()) {
-        // If the RIGHT key is down, set the player velocity to move right
-        this.player.body.acceleration.x = this.ACCELERATION;
-    } else {
-        this.player.body.acceleration.x = 0;
+    game.camera.follow(player, Phaser.Camera.FOLLOW_LOCKON, 0.1);
+
+    cursors = game.input.keyboard.createCursorKeys();
+    fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+    prevCamX = game.camera.x;
+
+}
+
+function update () {
+
+    if (cursors.left.isDown)
+    {
+        player.x -= 8;
+        player.scale.x = -1;
+    }
+    else if (cursors.right.isDown)
+    {
+        player.x += 8;
+        player.scale.x = 1;
     }
 
-    // Set a variable that is true when the player is touching the ground
-    var onTheGround = this.player.body.touching.down;
-
-    if (onTheGround && this.upInputIsActive()) {
-        // Jump when the player is touching the ground and the up arrow is pressed
-        this.player.body.velocity.y = this.JUMP_SPEED;
+    if (cursors.up.isDown)
+    {
+        player.y -= 8;
     }
-};
+    else if (cursors.down.isDown)
+    {
+        player.y += 8;
+    }
 
-// This function should return true when the player activates the "go left" control
-// In this case, either holding the right arrow or tapping or clicking on the left
-// side of the screen.
-GameState.prototype.leftInputIsActive = function() {
-    var isActive = false;
+    if (fireButton.isDown)
+    {
+        fireBullet();
+    }
 
-    isActive = this.input.keyboard.isDown(Phaser.Keyboard.LEFT);
-    isActive |= (this.game.input.activePointer.isDown &&
-        this.game.input.activePointer.x < this.game.width/4);
+    lazers.forEachAlive(updateBullets, this);
 
-    return isActive;
-};
+    prevCamX = game.camera.x;
 
-// This function should return true when the player activates the "go right" control
-// In this case, either holding the right arrow or tapping or clicking on the right
-// side of the screen.
-GameState.prototype.rightInputIsActive = function() {
-    var isActive = false;
+}
 
-    isActive = this.input.keyboard.isDown(Phaser.Keyboard.RIGHT);
-    isActive |= (this.game.input.activePointer.isDown &&
-        this.game.input.activePointer.x > this.game.width/2 + this.game.width/4);
+function updateBullets (lazer) {
 
-    return isActive;
-};
+    // if (game.time.now > frameTime)
+    // {
+    //     frameTime = game.time.now + 500;
+    // }
+    // else
+    // {
+    //     return;
+    // }
 
-// This function should return true when the player activates the "jump" control
-// In this case, either holding the up arrow or tapping or clicking on the center
-// part of the screen.
-GameState.prototype.upInputIsActive = function(duration) {
-    var isActive = false;
+    //  Adjust for camera scrolling
+    var camDelta = game.camera.x - prevCamX;
+    lazer.x += camDelta;
 
-    isActive = this.input.keyboard.downDuration(Phaser.Keyboard.UP, duration);
-    isActive |= (this.game.input.activePointer.justPressed(duration + 1000/60) &&
-        this.game.input.activePointer.x > this.game.width/4 &&
-        this.game.input.activePointer.x < this.game.width/2 + this.game.width/4);
+    if (lazer.animations.frameName !== 'frame30')
+    {
+        lazer.animations.next();
+    }
+    else
+    {
+        if (lazer.scale.x === 1)
+        {
+            lazer.x += 16;
 
-    return isActive;
-};
+            if (lazer.x > (game.camera.view.right - 224))
+            {
+                lazer.kill();
+            }
+        }
+        else
+        {
+            lazer.x -= 16;
 
-var game = new Phaser.Game(848, 450, Phaser.AUTO, 'game');
-game.state.add('game', GameState, true);
+            if (lazer.x < (game.camera.view.left - 224))
+            {
+                lazer.kill();
+            }
+        }
+    }
+
+}
+
+function fireBullet () {
+
+    if (game.time.now > bulletTime)
+    {
+        //  Grab the first bullet we can from the pool
+        lazer = lazers.getFirstDead(true, player.x + 24 * player.scale.x, player.y + 8, 'lazer');
+
+        lazer.animations.add('fire', frames, 60);
+        lazer.animations.frameName = 'frame02';
+
+        lazer.scale.x = player.scale.x;
+
+        if (lazer.scale.x === 1)
+        {
+            // lazer.anchor.x = 1;
+        }
+        else
+        {
+            // lazer.anchor.x = 0;
+        }
+
+        //  Lazers start out with a width of 96 and expand over time
+        // lazer.crop(new Phaser.Rectangle(244-96, 0, 96, 2), true);
+
+        bulletTime = game.time.now + 250;
+    }
+
+}
