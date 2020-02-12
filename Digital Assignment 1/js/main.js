@@ -5,7 +5,7 @@ var GameState = function(game) {
 // Load images and sounds
 GameState.prototype.preload = function() {
     this.game.load.image('ground', '/assets/pic.png');
-    this.game.load.image('player', '/assets/cat_idle.png');
+    this.game.load.spritesheet('player', '/assets/cat_idle.png', 64,64);
 };
 
 // Setup the example
