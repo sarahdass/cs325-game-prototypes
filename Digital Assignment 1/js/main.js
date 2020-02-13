@@ -8,7 +8,7 @@ function preload() {
     game.load.spritesheet('ship', 'assets/walk.png', 32,32 );
     game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
     game.load.spritesheet('kaboom', 'assets/invaders/explode.png', 128, 128);
-   // game.load.image('starfield', 'assets/bg.png');
+    game.load.image('starfield', 'assets/bg.png');
     game.load.image('background', 'assets/bg.png');
 
 }
@@ -35,7 +35,7 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //  The scrolling starfield background
-    //starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
+    starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
 
     //  Our bullet group
     bullets = game.add.group();
@@ -136,7 +136,7 @@ function setupInvader (invader) {
 
 function descend() {
 
-    aliens.y += 10;
+    aliens.y += 20;
 
 }
 
@@ -147,6 +147,7 @@ function update() {
 
     if (player.alive)
     {
+        player.animations.add('walk', [1, 2, 3, 4, 5, 6,7, 8, 9], 10, true);
         //  Reset the player, then check for movement keys
         player.body.velocity.setTo(0, 0);
 
