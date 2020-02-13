@@ -8,8 +8,8 @@ function preload() {
     game.load.spritesheet('ship', 'assets/walk.png', 32,32 );
     game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
     game.load.spritesheet('kaboom', 'assets/explo.png', 694 , 83, 11);
-    game.load.image('starfield', 'assets/bg.png');
-    game.load.image('background', 'assets/bg.png');
+    game.load.image('starfield', 'assets/invaders/starfield.png');
+    game.load.image('background', 'assets/background2/bg.png');
 
 }
 
