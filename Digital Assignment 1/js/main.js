@@ -9,7 +9,7 @@ function preload() {
     //game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
     game.load.spritesheet('kaboom', 'assets/explo.png', 63 , 83, 11);
     game.load.image('starfield', 'assets/invaders/starfield.png');
-    game.load.image('background', 'assets/background2/bg.png');
+    game.load.image('background', 'assets/stonebg/bg.png');
 
 }
 
