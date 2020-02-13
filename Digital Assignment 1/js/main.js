@@ -5,10 +5,11 @@ function preload() {
     game.load.image('bullet', 'assets/smallarrow.png');
     game.load.image('enemyBullet', 'assets/ball.png');
     game.load.spritesheet('invader', 'assets/ghostIce_all.png', 32, 32);
-    game.load.image('ship', 'assets/invaders/player.png');
+    game.load.spritesheet('ship', 'assets/walk.png', 32,32 );
+    game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
     game.load.spritesheet('kaboom', 'assets/invaders/explode.png', 128, 128);
     game.load.image('starfield', 'assets/invaders/starfield.png');
-    game.load.image('background', 'assets/background2.png');
+    game.load.image('background', 'assets/bg.png');
 
 }
 
