@@ -147,13 +147,14 @@ function update() {
 
     if (player.alive)
     {
-        //player.animations.add('walk', [1, 2, 3, 4, 5, 6,7, 8, 9], 10, true);
+        player.animations.add('walk');
         //  Reset the player, then check for movement keys
         player.body.velocity.setTo(0, 0);
 
         if (cursors.left.isDown)
         {
             player.body.velocity.x = -200;
+            player.play('walk', 20, false, true );
         }
         else if (cursors.right.isDown)
         {
