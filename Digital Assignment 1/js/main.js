@@ -332,6 +332,10 @@ function restart () {
     //  And brings the aliens back from the dead :)
     aliens.removeAll();
     createAliens();
+    if (lives.countLiving() <= 0)
+    {
+        player.kill();
+    }
     player = game.add.sprite(400, 500, 'ship');
     var ani = player.animations.add('walk');
     ani.play(10, true);
