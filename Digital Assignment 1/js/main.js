@@ -115,7 +115,7 @@ function createAliens () {
             alien.anchor.setTo(0.5, 0.5);
             alien.animations.add('fly', [10, 11, 12, 13, 14], 10, true);
             alien.play('fly');
-            alien.body.moves = true;
+            alien.body.moves = false;
         }
     }
 
@@ -124,11 +124,10 @@ function createAliens () {
 
     //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
     var tween = game.add.tween(aliens).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
-    var twee - game.add.tween(aliens).to( {y: 200}, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
+    //var twee - game.add.tween(aliens).to( {y: 200}, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
 
     //  When the tween loops it calls descend
     tween.onLoop.add(descend, this);
-    twee.onLoop.add(descend, this);
     
 }
 
@@ -143,7 +142,7 @@ function setupInvader (invader) {
 function descend() {
 
     aliens.y += 0;
-
+    aliean.body.velocity.y = 200;
 }
 
 function update() {
