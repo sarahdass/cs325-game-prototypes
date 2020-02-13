@@ -332,7 +332,7 @@ function restart () {
     //  And brings the aliens back from the dead :)
     aliens.removeAll();
     createAliens();
-    if (lives.countLiving() <= 0)
+    if (lives.countLiving() > 0)
     {
         player.kill();
     }
