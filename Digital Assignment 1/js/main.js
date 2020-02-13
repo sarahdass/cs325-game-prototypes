@@ -209,7 +209,7 @@ function collisionHandler (bullet, alien) {
     //  And create an explosion :)
     var explosion = explosions.getFirstExists(false);
     explosion.reset(alien.body.x, alien.body.y);
-    explosion.play('kaboom', 11, false, true);
+    explosion.play('kaboom', 30, false, true);
 
     if (aliens.countLiving() == 0)
     {
@@ -240,7 +240,7 @@ function enemyHitsPlayer (player,bullet) {
     //  And create an explosion :)
     var explosion = explosions.getFirstExists(false);
     explosion.reset(player.body.x, player.body.y);
-    explosion.play('kaboom', 11, false, true);
+    explosion.play('kaboom', 30, false, true);
 
     // When the player dies
     if (lives.countLiving() < 1)
