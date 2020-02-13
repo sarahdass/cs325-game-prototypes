@@ -332,9 +332,15 @@ function restart () {
     //  And brings the aliens back from the dead :)
     aliens.removeAll();
     createAliens();
+    player = game.add.sprite(400, 500, 'ship');
+    var ani = player.animations.add('walk');
+    ani.play(10, true);
+ 
+    player.anchor.setTo(0.5, 0.5);
+    game.physics.enable(player, Phaser.Physics.ARCADE);
 
     //revives the player
-    player.revive();
+    //player.revive();
     //hides the text
     stateText.visible = false;
 
