@@ -6,8 +6,8 @@ function preload() {
     game.load.image('enemyBullet', 'assets/ball.png');
     game.load.spritesheet('invader', 'assets/ghostIce_all.png', 32, 32);
     game.load.spritesheet('ship', 'assets/walk.png', 32,32 );
-    game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
-    game.load.spritesheet('kaboom', 'assets/explo.png', 694 , 83, 11);
+    //game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
+    game.load.spritesheet('kaboom', 'assets/explo.png', 63 , 83, 11);
     game.load.image('starfield', 'assets/invaders/starfield.png');
     game.load.image('background', 'assets/background2/bg.png');
 
@@ -209,7 +209,7 @@ function collisionHandler (bullet, alien) {
     //  And create an explosion :)
     var explosion = explosions.getFirstExists(false);
     explosion.reset(alien.body.x, alien.body.y);
-    explosion.play('kaboom', 30, false, true);
+    explosion.play('kaboom', 11, false, true);
 
     if (aliens.countLiving() == 0)
     {
@@ -240,7 +240,7 @@ function enemyHitsPlayer (player,bullet) {
     //  And create an explosion :)
     var explosion = explosions.getFirstExists(false);
     explosion.reset(player.body.x, player.body.y);
-    explosion.play('kaboom', 30, false, true);
+    explosion.play('kaboom', 11, false, true);
 
     // When the player dies
     if (lives.countLiving() < 1)
