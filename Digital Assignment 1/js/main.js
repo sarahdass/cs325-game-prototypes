@@ -9,7 +9,7 @@ function preload() {
     //game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
     game.load.spritesheet('kaboom', 'assets/explo.png', 63 , 83, 10);
     game.load.image('starfield', 'assets/stonebg.png');
-    game.load.image('background', 'assets/stonebg/bg.png');
+    game.load.image('background', 'assets/stonebg/.png');
 
 }
 
@@ -113,7 +113,7 @@ function createAliens () {
         {
             var alien = aliens.create(x * 48, y * 50, 'invader');
             alien.anchor.setTo(0.5, 0.5);
-            alien.animations.add('fly', [10, 11, 12, 13, 14, 15], 10, true);
+            alien.animations.add('fly', [10, 11, 12, 13, 14], 10, true);
             alien.play('fly');
             alien.body.moves = false;
         }
@@ -185,6 +185,7 @@ function update() {
         //  Run collision
         game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
         game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
+        game.physics.arcade.overlap(player, aliens, playerTouchEnemy, null, this);
     }
 
 }
@@ -226,6 +227,33 @@ function collisionHandler (bullet, alien) {
         game.input.onTap.addOnce(restart,this);
     }
 
+}
+function playerTouchEnemy(player, alien){
+    
+    live = lives.getFirstAlive();
+
+    if (live)
+    {
+        live.kill();
+    }
+
+    //  And create an explosion :)
+    var explosion = explosions.getFirstExists(false);
+    explosion.reset(player.body.x, player.body.y);
+    explosion.play('kaboom', 30, false, true);
+
+    // When the player dies
+    if (lives.countLiving() < 1)
+    {
+        player.kill();
+        enemyBullets.callAll('kill');
+
+        stateText.text=" GAME OVER \n Click to restart";
+        stateText.visible = true;
+
+        //the "click to restart" handler
+        game.input.onTap.addOnce(restart,this);
+    }
 }
 
 function enemyHitsPlayer (player,bullet) {
