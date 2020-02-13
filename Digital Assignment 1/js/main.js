@@ -7,7 +7,7 @@ function preload() {
     game.load.spritesheet('invader', 'assets/ghostIce_all.png', 32, 32);
     game.load.spritesheet('ship', 'assets/walk.png', 32,32,11 );
     //game.load.spritesheet('shoot', 'assets/shoot.png', 320, 64); 
-    game.load.spritesheet('kaboom', 'assets/explo.png', 63 , 83, 11);
+    game.load.spritesheet('kaboom', 'assets/explo.png', 63 , 83, 10);
     game.load.image('starfield', 'assets/stonebg.png');
     game.load.image('background', 'assets/stonebg/bg.png');
 
@@ -61,7 +61,7 @@ function create() {
     //  The hero!
     player = game.add.sprite(400, 500, 'ship');
     var ani = player.animations.add('walk');
-    ani.play(20, true);
+    ani.play(10, true);
  
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
