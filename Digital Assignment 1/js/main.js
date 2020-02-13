@@ -147,7 +147,7 @@ function update() {
 
     if (player.alive)
     {
-        player.animations.add('walk', [1, 2, 3, 4, 5, 6,7, 8, 9], 10, true);
+        //player.animations.add('walk', [1, 2, 3, 4, 5, 6,7, 8, 9], 10, true);
         //  Reset the player, then check for movement keys
         player.body.velocity.setTo(0, 0);
 
