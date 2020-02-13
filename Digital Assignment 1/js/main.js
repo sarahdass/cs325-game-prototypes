@@ -60,6 +60,9 @@ function create() {
 
     //  The hero!
     player = game.add.sprite(400, 500, 'ship');
+    var ani = player.animations.add('walk');
+    ani.play(20, true);
+ 
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
@@ -147,14 +150,12 @@ function update() {
 
     if (player.alive)
     {
-        player.animations.add('walk');
         //  Reset the player, then check for movement keys
         player.body.velocity.setTo(0, 0);
 
         if (cursors.left.isDown)
         {
             player.body.velocity.x = -200;
-            player.play('walk', 20, false, true );
         }
         else if (cursors.right.isDown)
         {
