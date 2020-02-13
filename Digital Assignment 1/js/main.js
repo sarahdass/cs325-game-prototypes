@@ -139,7 +139,7 @@ function setupInvader (invader) {
 
 function descend() {
 
-    aliens.y += 20;
+    aliens.y += 100;
 
 }
 
