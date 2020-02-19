@@ -10,6 +10,8 @@ function preload() {
     game.load.image('dark background', 'assets/dark background.png');
     game.load.image('bkgd_0', 'assets/bkgd_0.png');
     game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
+    game.load.spritesheet('ghost_right', 'assets/ghost_flipped.png', 30, 34);
+    game.load.spritesheet('ghost_left', 'assets/ghost.png', 30, 34);
     game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
     game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
     game.load.image('starSmall', 'assets/starstruck/star.png');
@@ -41,8 +43,8 @@ function create() {
 
     map.addTilesetImage('tiles again');
     map.addTilesetImage('tiles');
-    map.add.tileSprite(0,0,640,640,'dark background');
-    map.add.tileSprite(0,0,640,640('bkgd_0');
+   // map.add.tileSprite(0,0,640,640,'dark background');
+   // map.add.tileSprite(0,0,640,640('bkgd_0');
    // map.addTilesetImage('tiles');
    // map.addTilesetImage('tiles again');
     //map.addTilesetImage('tiles again');
