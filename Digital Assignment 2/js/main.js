@@ -3,7 +3,8 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload:
 function preload() {
 
     game.load.tilemap('level1', 'assets/haunted house 2.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tileset', 'assets/tileset.png');
+    game.load.image('tiles', 'assets/tileset.png');
+    game.load.image('tiles again', 'assets/tileset.png');
     //game.load.json('tiles', 'assets/tiles.json');
     //game.load.json('tiles again', 'assets/tiles again.json');
     game.load.image('dark background', 'assets/dark background.png');
@@ -38,8 +39,8 @@ function create() {
 
     map = game.add.tilemap('level1');
 
-    map.addTilesetImage('tiles again', 'tileset');
-    map.addTilesetImage('tiles', 'tileset');
+    map.addTilesetImage('tiles again');
+    map.addTilesetImage('tiles');
     map.addTilesetImage('dark background');
     map.addTilesetImage('bkgd_0');
    // map.addTilesetImage('tiles');
