@@ -2,7 +2,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload:
 
 function preload() {
 
-    game.load.tilemap('level1', 'assets/starstruck/level1.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('level1', 'assets/haunted house 2.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
     game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
     game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
