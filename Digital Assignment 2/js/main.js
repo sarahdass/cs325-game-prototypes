@@ -9,11 +9,11 @@ function preload() {
     //game.load.json('tiles again', 'assets/tiles again.json');
     game.load.image('dark background', 'assets/dark background.png');
     game.load.image('bkgd_0', 'assets/bkgd_0.png');
-    game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
+    //game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
     //game.load.spritesheet('ghost_right', 'assets/ghost_flipped.png', 30, 34);
     game.load.spritesheet('ghost', 'assets/fullghost.png', 30, 34);
-    game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
-    game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
+   // game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
+   // game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
     game.load.image('starSmall', 'assets/starstruck/star.png');
     game.load.image('starBig', 'assets/starstruck/star2.png');
     game.load.image('background', 'assets/starstruck/background2.png');
@@ -71,7 +71,7 @@ function create() {
     player.body.collideWorldBounds = true;
     player.body.setSize(20, 32, 5, 16);
 
-    player.animations.add('left', [0, 1, 2, 3, 4], 10, true);
+    player.animations.add('left', [1, 2, 3, 4], 10, true);
     player.animations.add('turn', [5], 20, true);
     player.animations.add('right', [15, 16, 17, 18, 19], 10, true);
 
