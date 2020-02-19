@@ -4,8 +4,8 @@ function preload() {
 
     game.load.tilemap('level1', 'assets/haunted house 2.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tileset', 'assets/tileset.png');
-    game.load.json('tiles', 'assets/tiles.json');
-    game.load.json('tiles again', 'assets/tiles again.json');
+    //game.load.json('tiles', 'assets/tiles.json');
+    //game.load.json('tiles again', 'assets/tiles again.json');
     game.load.image('dark background', 'assets/dark background.png');
     game.load.image('bkgd_0', 'assets/bkgd_0.png');
     game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
@@ -41,8 +41,8 @@ function create() {
     map.addTilesetImage('tileset');
     map.addTilesetImage('dark background');
     map.addTilesetImage('bkgd_0');
-    map.addTilesetImage('tiles');
-    map.addTilesetImage('tiles again');
+   // map.addTilesetImage('tiles');
+   // map.addTilesetImage('tiles again');
     //map.addTilesetImage('tiles again');
 
     map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
