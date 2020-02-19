@@ -4,8 +4,8 @@ function preload() {
 
     game.load.tilemap('level1', 'assets/haunted house 2.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tileset', 'assets/tileset.png');
-    game.load.image('tiles', 'assets/tiles.tsx');
-    game.load.image('tiles again', 'assets/tiles again.tsx');
+    game.load.image('tiles', 'assets/tiles.json');
+    game.load.image('tiles again', 'assets/tiles again.json');
     game.load.image('dark background', 'assets/dark background.png');
     game.load.image('bkgd_0', 'assets/bkgd_0.png');
     game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
@@ -31,14 +31,18 @@ function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    game.stage.backgroundColor = '#000000';
+    //game.stage.backgroundColor = '#000000';
 
-    bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+    //bg = game.add.tileSprite(0, 0, 800, 600, 'background');
     bg.fixedToCamera = true;
 
     map = game.add.tilemap('level1');
 
     map.addTilesetImage('tileset');
+    map.addTilesetImage('dark background');
+    map.addTilesetImage('bkgd_0');
+    map.addTilesetImage('tiles');
+    map.addTilesetImage('tiles again');
     //map.addTilesetImage('tiles again');
 
     map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
