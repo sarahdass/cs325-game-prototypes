@@ -36,7 +36,7 @@ function create() {
 
     //game.stage.backgroundColor = '#000000';
 
-    bg = game.add.tileSprite(0, 0, 800, 600, 'dark background');
+    bg = game.add.tileSprite(0, 0, 640, 640, 'dark background');
     bg.fixedToCamera = true;
 
     map = game.add.tilemap('level1');
@@ -49,7 +49,7 @@ function create() {
    // map.addTilesetImage('tiles again');
     //map.addTilesetImage('tiles again');
 
-    map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
+    //map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
 
     
     layer_bg = map.createLayer('Image Layer 1');
