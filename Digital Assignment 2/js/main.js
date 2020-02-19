@@ -38,7 +38,8 @@ function create() {
 
     map = game.add.tilemap('level1');
 
-    map.addTilesetImage('tileset');
+    map.addTilesetImage('tiles again', 'tileset');
+    map.addTilesetImage('tiles', 'tileset');
     map.addTilesetImage('dark background');
     map.addTilesetImage('bkgd_0');
    // map.addTilesetImage('tiles');
