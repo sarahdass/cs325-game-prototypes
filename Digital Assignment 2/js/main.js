@@ -6,8 +6,8 @@ function preload() {
     game.load.image('tileset', 'assets/tileset.png');
     game.load.image('tiles', 'assets/tiles.tsx');
     game.load.image('tiles again', 'assets/tiles again.tsx');
-    game.load.image('darkbackground', 'assets/darkbackground.png');
-    game.load.image('bkgd0', 'assets/bkgd0.png');
+    game.load.image('dark background', 'assets/dark background.png');
+    game.load.image('bkgd_0', 'assets/bkgd_0.png');
     game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
     game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
     game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
