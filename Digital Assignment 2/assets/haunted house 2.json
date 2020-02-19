@@ -57,11 +57,11 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"tiles again.tsx"
+         "source":"tiles again.json"
         }, 
         {
          "firstgid":49,
-         "source":"tiles.tsx"
+         "source":"tiles.json"
         }],
  "tilewidth":16,
  "type":"map",
