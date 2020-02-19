@@ -1,8 +1,9 @@
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+pvar game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
     game.load.tilemap('level1', 'assets/haunted house 2.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tileset', 'assets/tileset.png');
     game.load.image('tiles', 'assets/tiles.tsx');
     game.load.image('tiles again', 'assets/tiles again.tsx');
     game.load.image('darkbackground', 'assets/darkbackground.png');
@@ -37,12 +38,15 @@ function create() {
 
     map = game.add.tilemap('level1');
 
-    map.addTilesetImage('tiles');
-    map.addTilesetImage('tiles again');
+    map.addTilesetImage('tileset');
+    //map.addTilesetImage('tiles again');
 
     map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
 
     layer = map.createLayer('Tile Layer 1');
+    layer_bg = map.createLayer('Image Layer 1');
+    layer_fg = map.createLayer('Image Layer 2');
+    layer_bl = map.createLayer('castle back');
 
     //  Un-comment this on to see the collision tiles
     // layer.debug = true;
