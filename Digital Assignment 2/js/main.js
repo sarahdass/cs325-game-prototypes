@@ -10,8 +10,8 @@ function preload() {
     game.load.image('dark background', 'assets/dark background.png');
     game.load.image('bkgd_0', 'assets/bkgd_0.png');
     game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
-    game.load.spritesheet('ghost_right', 'assets/ghost_flipped.png', 30, 34);
-    game.load.spritesheet('ghost_left', 'assets/ghost.png', 30, 34);
+    //game.load.spritesheet('ghost_right', 'assets/ghost_flipped.png', 30, 34);
+    game.load.spritesheet('ghost', 'assets/fullghost.png', 30, 34);
     game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
     game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
     game.load.image('starSmall', 'assets/starstruck/star.png');
@@ -52,8 +52,8 @@ function create() {
     //map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
 
     
-    layer_bg = map.createLayer('Image Layer 1');
-    layer_fg = map.createLayer('Image Layer 2');
+    //layer_bg = map.createLayer('Image Layer 1');
+    //layer_fg = map.createLayer('Image Layer 2');
     layer_bl = map.createLayer('castle back');
     layer = map.createLayer('Tile Layer 1');
 
@@ -64,16 +64,16 @@ function create() {
 
     game.physics.arcade.gravity.y = 250;
 
-    player = game.add.sprite(32, 32, 'dude');
+    player = game.add.sprite(32, 32, 'ghost');
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
     player.body.bounce.y = 0.2;
     player.body.collideWorldBounds = true;
     player.body.setSize(20, 32, 5, 16);
 
-    player.animations.add('left', [0, 1, 2, 3], 10, true);
-    player.animations.add('turn', [4], 20, true);
-    player.animations.add('right', [5, 6, 7, 8], 10, true);
+    player.animations.add('left', [0, 1, 2, 3.4 ], 10, true);
+    player.animations.add('turn', [5], 20, true);
+    player.animations.add('right', [15, 16, 17, 18, 19], 10, true);
 
     game.camera.follow(player);
 
