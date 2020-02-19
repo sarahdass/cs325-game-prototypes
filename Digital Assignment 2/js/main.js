@@ -34,7 +34,7 @@ function create() {
 
     //game.stage.backgroundColor = '#000000';
 
-    bg = game.add.tileSprite(0, 0, 800, 600, 'background');
+    bg = game.add.tileSprite(0, 0, 800, 600, 'dark background');
     bg.fixedToCamera = true;
 
     map = game.add.tilemap('level1');
@@ -49,10 +49,11 @@ function create() {
 
     map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
 
-    layer = map.createLayer('Tile Layer 1');
+    
     layer_bg = map.createLayer('Image Layer 1');
     layer_fg = map.createLayer('Image Layer 2');
     layer_bl = map.createLayer('castle back');
+    layer = map.createLayer('Tile Layer 1');
 
     //  Un-comment this on to see the collision tiles
     // layer.debug = true;
