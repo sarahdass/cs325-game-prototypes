@@ -41,8 +41,8 @@ function create() {
 
     map.addTilesetImage('tiles again');
     map.addTilesetImage('tiles');
-    map.addImage('dark background');
-    map.addImage('bkgd_0');
+    map.add.tileSprite(0,0,640,640,'dark background');
+    map.add.tileSprite(0,0,640,640('bkgd_0');
    // map.addTilesetImage('tiles');
    // map.addTilesetImage('tiles again');
     //map.addTilesetImage('tiles again');
