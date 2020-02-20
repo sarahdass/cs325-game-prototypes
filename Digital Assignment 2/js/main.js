@@ -180,8 +180,8 @@ function hit(player, guy){
     player.animations.play('scare');
     guy.body.velocity.y = -250;
     guy.kill();
- 
-    if(guys.countliving() == 0){
+    countliving -= 1;
+    if(guys.countliving == 0){
         stateText.text = " You scared them all away!, \n Click to restart";
         stateText.visible = true;
 
