@@ -12,7 +12,7 @@ function preload() {
     //game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
     //game.load.spritesheet('ghost_right', 'assets/ghost_flipped.png', 30, 34);
     game.load.spritesheet('ghost', 'assets/fullghost.png', 34, 30, 20);
-    game.load.spritesheet('guy', 'assets/guy.png', 504, 49, 18);
+    game.load.spritesheet('guy', 'assets/guy.png', 28, 49, 18);
    // game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
    // game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
     game.load.image('starSmall', 'assets/starstruck/star.png');
