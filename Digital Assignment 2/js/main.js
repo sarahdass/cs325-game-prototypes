@@ -4,7 +4,7 @@ function preload() {
 
     game.load.tilemap('level1', 'assets/haunted house 2.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image(96, 128, 'tiles', 'assets/tileset.png');
-    game.load.image(96, 128'tiles again', 'assets/tileset.png');
+    game.load.image(96, 128, 'tiles again', 'assets/tileset.png');
     //game.load.json('tiles', 'assets/tiles.json');
     //game.load.json('tiles again', 'assets/tiles again.json');
     game.load.image('dark background', 'assets/dark background.png');
