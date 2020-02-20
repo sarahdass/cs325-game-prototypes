@@ -12,6 +12,7 @@ function preload() {
     //game.load.image('tiles-1', 'assets/starstruck/tiles-1.png');
     //game.load.spritesheet('ghost_right', 'assets/ghost_flipped.png', 30, 34);
     game.load.spritesheet('ghost', 'assets/fullghost.png', 34, 30, 20);
+    game.load.spritesheet('guy', 'assets/guy.png', 504, 49);
    // game.load.spritesheet('dude', 'assets/starstruck/dude.png', 32, 48);
    // game.load.spritesheet('droid', 'assets/starstruck/droid.png', 32, 32);
     game.load.image('starSmall', 'assets/starstruck/star.png');
@@ -29,6 +30,7 @@ var jumpTimer = 0;
 var cursors;
 var jumpButton;
 var bg;
+var guy;
 
 function create() {
 
@@ -74,7 +76,13 @@ function create() {
     player.animations.add('left', [0,1,2,3,4,5], 10, true);
     player.animations.add('turn', [6], 20, true);
     player.animations.add('right', [19,17,16,15,14], 10, true);
-
+    
+    guy = game.add.sprite(44, 44, 'guy');
+    game.physics.enable(guy, Phaser.Physics.ARCADE);
+    guy.animations.add('guyleft', [0,1,2,3,4,5,6,7], 10, true);
+    guy.animations.add('guyright', [15, 16, 14, 13, 12], 10, true);
+    guy.play('guyleft');
+    var tween = game.add.tween(guy).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
     game.camera.follow(player);
 
     cursors = game.input.keyboard.createCursorKeys();
