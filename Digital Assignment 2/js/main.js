@@ -172,7 +172,7 @@ function update() {
         player.body.velocity.y = -250;
         jumpTimer = game.time.now + 750;
     }
-    game.physics.arcade.overlap(player, guy , hit, null, this);
+    game.physics.arcade.overlap(player, guys, hit, null, this);
 
 }
 function hit(player, guy){
