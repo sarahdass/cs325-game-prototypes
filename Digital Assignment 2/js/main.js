@@ -55,7 +55,7 @@ function create() {
     //layer_bg = map.createLayer('Image Layer 1');
     //layer_fg = map.createLayer('Image Layer 2');
     layer_bl = map.createLayer('castle back');
-    layer = map.createLayer('Tile Layer 1');
+    layer = map.createLayer('Tile Layer 3');
 
     //  Un-comment this on to see the collision tiles
     // layer.debug = true;
