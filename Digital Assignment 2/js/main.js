@@ -1,4 +1,4 @@
-var game = new Phaser.Game(2000, 640, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(640, 640, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
@@ -54,13 +54,14 @@ function create() {
    // map.addTilesetImage('tiles again');
     //map.addTilesetImage('tiles again');
 
-    //map.setCollisionByExclusion([ 13, 14, 15, 16, 46, 47, 48, 49, 50, 51 ]);
+    map.setCollisionByExclusion([0, -1]);
 
     
     //layer_bg = map.createLayer('Image Layer 1');
     //layer_fg = map.createLayer('Image Layer 2');
     layer_bl = map.createLayer('castle back');
     layer = map.createLayer('Tile Layer 3');
+    layer.cameraOffset.set(0, 0);
 
     //  Un-comment this on to see the collision tiles
     // layer.debug = true;
@@ -195,6 +196,7 @@ function hit(player, guy){
     }
 }
 function restart(){
+    stateText.visible = false;
     createguys();
 }
 function render () {
