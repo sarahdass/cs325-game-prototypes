@@ -34,12 +34,30 @@
  "tileheight":16,
  "tilesets":[
         {
+         "columns":8,
          "firstgid":1,
-         "source":"tiles again.tsx"
+         "image":"tileset.png",
+         "imageheight":96,
+         "imagewidth":128,
+         "margin":0,
+         "name":"tiles again",
+         "spacing":0,
+         "tilecount":48,
+         "tileheight":16,
+         "tilewidth":16
         }, 
         {
+         "columns":4,
          "firstgid":49,
-         "source":"tiles.tsx"
+         "image":"tileset.png",
+         "imageheight":96,
+         "imagewidth":128,
+         "margin":0,
+         "name":"tiles",
+         "spacing":0,
+         "tilecount":12,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":16,
  "type":"map",
