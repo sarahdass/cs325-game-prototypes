@@ -69,7 +69,7 @@ function create() {
 
     player.body.bounce.y = 0.2;
     player.body.collideWorldBounds = true;
-    player.body.setSize(20, 32, 5, 16);
+    player.body.setSize(20, 32, 5,16);
 
     player.animations.add('left', [0,1,2,3,4,5], 10, true);
     player.animations.add('turn', [6], 20, true);
@@ -120,7 +120,7 @@ function update() {
             }
             else
             {
-                player.frame = 5;
+                player.frame = 19;
             }
 
             facing = 'idle';
