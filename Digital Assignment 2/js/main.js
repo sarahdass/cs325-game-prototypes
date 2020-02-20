@@ -85,7 +85,7 @@ function create() {
     game.camera.follow(player);
     createguys();
     
-    guy = game.add.sprite(300, 44, 'guy');
+    //guy = game.add.sprite(300, 44, 'guy');
     
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -104,7 +104,7 @@ function way(){
 function createguys(){
     for (var x = 0; x < 5; x++)
         {
-            var guy = guys.create(x * 48, 50, 'invader');
+            var guy = guys.create(x * 100, 50, 'guy');
             guy.anchor.setTo(0.5, 0.5);
             //game.physics.enable(guy, Phaser.Physics.ARCADE);
             guy.body.bounce.y = 0.2;
