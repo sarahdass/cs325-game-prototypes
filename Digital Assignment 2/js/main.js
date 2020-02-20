@@ -126,14 +126,14 @@ function createguys(){
         }
     var tween = game.add.tween(guys).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
     
-    game.physics.arcade.collide(guy, layer);
+    game.physics.arcade.collide(guys, layer);
     
     tween.onLoop.add(way, this);
 }
 function update() {
 
     game.physics.arcade.collide(player, layer);
-    
+    game.physics.arcade.collide(guys, layer);
     game.physics.arcade.collide(guy, player);
     player.body.velocity.x = 0;
 
