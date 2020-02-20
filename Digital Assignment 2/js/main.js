@@ -78,7 +78,7 @@ function create() {
     player.animations.add('right', [19,17,16,15,14], 10, true);
     player.animations.add('scare', [6, 7, 8, 9, 10, 11, 12, 13], 10, true);
     
-    guy = game.add.sprite(44, 44, 'guy');
+    guy = game.add.sprite(300, 44, 'guy');
     game.physics.enable(guy, Phaser.Physics.ARCADE);
     guy.body.bounce.y = 0.2;
     guy.body.collideWorldBounds = true;
