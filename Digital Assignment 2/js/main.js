@@ -79,6 +79,9 @@ function create() {
     
     guy = game.add.sprite(44, 44, 'guy');
     game.physics.enable(guy, Phaser.Physics.ARCADE);
+    guy.body.bounce.y = 0.2;
+    guy.body.collideWorldBounds = true;
+    guy.body.setSize(20, 32, 5,16);
     guy.animations.add('guyleft', [0,1,2,3,4,5,6,7], 10, true);
     guy.animations.add('guyright', [15, 16, 14, 13, 12], 10, true);
     guy.play('guyleft');
