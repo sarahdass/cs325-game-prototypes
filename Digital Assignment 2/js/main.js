@@ -31,7 +31,7 @@ var cursors;
 var jumpButton;
 var bg;
 var guy;
-var statetext;
+var stateText;
 var guys;
 var countliving;
 
