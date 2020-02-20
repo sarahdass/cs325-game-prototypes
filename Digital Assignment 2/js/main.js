@@ -107,6 +107,7 @@ function way(){
         guy.play('guyleft');
         direction = 'left';
     }
+    game.physics.arcade.collide(guy, layer);
 }
 function createguys(){
     countliving = 5;
