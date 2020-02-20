@@ -31,6 +31,8 @@ var cursors;
 var jumpButton;
 var bg;
 var guy;
+var statetext;
+var guys;
 
 function create() {
 
@@ -77,21 +79,14 @@ function create() {
     player.animations.add('turn', [6], 20, true);
     player.animations.add('right', [19,17,16,15,14], 10, true);
     player.animations.add('scare', [6, 7, 8, 9, 10, 11, 12, 13], 10, true);
+    guys = game.add.group();
+    guys.enableBody = true;
+    guys.physicsBodyType = Phaser.Physics.ARCADE;
+    game.camera.follow(player);
+    createguys();
     
     guy = game.add.sprite(300, 44, 'guy');
-    game.physics.enable(guy, Phaser.Physics.ARCADE);
-    guy.body.bounce.y = 0.2;
-    guy.body.collideWorldBounds = true;
-    guy.body.setSize(20, 32, 5,16);
-    guy.animations.add('guyleft', [0,1,2,3,4,5,6,7], 10, true);
-    guy.animations.add('guyright', [15, 16, 14, 13, 12], 10, true);
-    guy.play('guyleft');
-    var direction = 'left';
-    var tween = game.add.tween(guy).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
     
-    game.camera.follow(player);
-    
-    tween.onLoop.add(way, this);
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -105,6 +100,26 @@ function way(){
         guy.play('guyleft');
         direction = 'left';
     }
+}
+function createguys(){
+    for (var x = 0; x < 5; x++)
+        {
+            var guy = aliens.create(x * 48, 50, 'invader');
+            guy.anchor.setTo(0.5, 0.5);
+            //game.physics.enable(guy, Phaser.Physics.ARCADE);
+            guy.body.bounce.y = 0.2;
+            guy.body.collideWorldBounds = true;
+            guy.body.setSize(20, 32, 5,16);
+            guy.animations.add('guyleft', [0,1,2,3,4,5,6,7], 10, true);
+            guy.animations.add('guyright', [15, 16, 14, 13, 12], 10, true);
+            guy.play('guyleft');
+            var direction = 'left';
+        }
+    var tween = game.add.tween(guys).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
+    
+    
+    
+    tween.onLoop.add(way, this);
 }
 function update() {
 
@@ -164,6 +179,16 @@ function hit(player, guy){
     player.animations.play('scare');
     guy.body.velocity.y = -250;
     guy.kill();
+    if(guys.countliving == 0){
+        stateText.text = " You scared them all away!, \n Click to restart";
+        stateText.visible = true;
+
+        //the "click to restart" handler
+        game.input.onTap.addOnce(restart,this);
+    }
+}
+function restart(){
+    createguys();
 }
 function render () {
 
