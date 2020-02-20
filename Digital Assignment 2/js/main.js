@@ -104,7 +104,7 @@ function way(){
 function createguys(){
     for (var x = 0; x < 5; x++)
         {
-            var guy = aliens.create(x * 48, 50, 'invader');
+            var guy = guys.create(x * 48, 50, 'invader');
             guy.anchor.setTo(0.5, 0.5);
             //game.physics.enable(guy, Phaser.Physics.ARCADE);
             guy.body.bounce.y = 0.2;
