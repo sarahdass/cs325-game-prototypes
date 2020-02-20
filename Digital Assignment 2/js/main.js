@@ -62,6 +62,7 @@ function create() {
     layer_bl = map.createLayer('castle back');
     layer = map.createLayer('Tile Layer 3');
     layer.cameraOffset.set(0, 0);
+    map.setCollisionBetween(1, 999, true, layer);
 
     //  Un-comment this on to see the collision tiles
     // layer.debug = true;
