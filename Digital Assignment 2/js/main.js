@@ -35,7 +35,7 @@ var guy;
 function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
-
+    game.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE; //took from someone else who add this issue
     //game.stage.backgroundColor = '#000000';
 
     bg = game.add.tileSprite(0, 0, 640, 640, 'dark background');
