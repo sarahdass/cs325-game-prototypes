@@ -85,18 +85,30 @@ function create() {
     guy.animations.add('guyleft', [0,1,2,3,4,5,6,7], 10, true);
     guy.animations.add('guyright', [15, 16, 14, 13, 12], 10, true);
     guy.play('guyleft');
+    var direction = 'left';
     var tween = game.add.tween(guy).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 1000, 1000, true);
+    
     game.camera.follow(player);
-
+    
+    tween.onLoop.add(way, this);
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
 }
-
+function way(){
+    if(direction == 'left'){
+        guy.play('guyright');
+        direction = 'right';
+    }
+    else{
+        guy.play('guyleft');
+        direction = 'left';
+    }
+}
 function update() {
 
     game.physics.arcade.collide(player, layer);
-
+    game.physics.arcade.collide(guy, layer);
     player.body.velocity.x = 0;
 
     if (cursors.left.isDown)
