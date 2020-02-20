@@ -33,6 +33,7 @@ var bg;
 var guy;
 var statetext;
 var guys;
+var countliving;
 
 function create() {
 
@@ -102,7 +103,7 @@ function way(){
     }
 }
 function createguys(){
-    var countliving = 5;
+    countliving = 5;
     for (var x = 0; x < 5; x++)
         {
             var guy = guys.create(x * 100, 50, 'guy');
@@ -181,7 +182,7 @@ function hit(player, guy){
     guy.body.velocity.y = -250;
     guy.kill();
     countliving -= 1;
-    if(guys.countliving == 0){
+    if(countliving == 0){
         stateText.text = " You scared them all away!, \n Click to restart";
         stateText.visible = true;
 
