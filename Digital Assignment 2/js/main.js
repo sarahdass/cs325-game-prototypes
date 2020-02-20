@@ -76,6 +76,7 @@ function create() {
     player.animations.add('left', [0,1,2,3,4,5], 10, true);
     player.animations.add('turn', [6], 20, true);
     player.animations.add('right', [19,17,16,15,14], 10, true);
+    player.animations.add('scare', [6, 7, 8, 9, 10, 11, 12, 13], 10, true);
     
     guy = game.add.sprite(44, 44, 'guy');
     game.physics.enable(guy, Phaser.Physics.ARCADE);
@@ -109,6 +110,7 @@ function update() {
 
     game.physics.arcade.collide(player, layer);
     game.physics.arcade.collide(guy, layer);
+    game.physics.arcade.collide(guy, player);
     player.body.velocity.x = 0;
 
     if (cursors.left.isDown)
@@ -155,9 +157,14 @@ function update() {
         player.body.velocity.y = -250;
         jumpTimer = game.time.now + 750;
     }
+    game.physics.arcade.overlap(player, guy , hit, null, this);
 
 }
-
+function hit(player, guy){
+    player.animations.play('scare');
+    guy.body.velocity.y = -250;
+    guy.kill();
+}
 function render () {
 
     // game.debug.text(game.time.physicsElapsed, 32, 32);
