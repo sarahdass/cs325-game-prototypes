@@ -71,9 +71,9 @@ function create() {
     player.body.collideWorldBounds = true;
     player.body.setSize(20, 32, 5, 16);
 
-    player.animations.add('left', [0], 10, true);
-    player.animations.add('turn', [0], 20, true);
-    player.animations.add('right', [0], 10, true);
+    player.animations.add('left', [0,1,2,3,4,5], 10, true);
+    player.animations.add('turn', [6], 20, true);
+    player.animations.add('right', [19,17,16,15,14], 10, true);
 
     game.camera.follow(player);
 
