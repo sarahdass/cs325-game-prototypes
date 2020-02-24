@@ -7,5 +7,5 @@ var menuState = {
   },
   start: function() {
     game.state.start('main');
-  },
+  }
 };
