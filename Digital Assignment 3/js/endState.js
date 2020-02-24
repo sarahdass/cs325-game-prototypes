@@ -8,5 +8,5 @@ var endState = {
   },
   start: function() {
     game.state.start('menu');
-  },
+  }
 };
