@@ -86,8 +86,8 @@ window.onload = function() {
     
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game' );
     game.state.add('menu', menuState(game));
-    game.state.add( "main", make_main_game_state( game ) );
+    game.state.add( 'main', make_main_game_state( game ) );
     game.state.add('end', endState(game));
     
-    game.state.start( "menu" );
+    game.state.start('menu');
 };
