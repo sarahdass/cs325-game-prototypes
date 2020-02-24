@@ -47,7 +47,7 @@ function make_main_game_state( game )
 }
 
 
-function endState(game) = {
+function endState(game) {
 
 	create: function () {
         var name = game.add.text(80, 80, 'End of game', {font: '50px Arial', fill: '#ffffff' });
@@ -60,7 +60,7 @@ function endState(game) = {
 		this.state.start('menu');
 	}
 };
-function menuState(game) = {
+function menuState(game) {
   create: function(){
     var name = game.add.text(80, 80, 'Game', { font: '84px Arial', fill: '#fff' });
     var start = game.add.text(80, game.world.height-80, 'Press S to start', { font: '25px Arial', fill: '#ffffff' });
