@@ -41,7 +41,7 @@ function make_main_game_state( game )
     }
     function end(){
         game.state.start('menu');
-    },
+    }
     
     return { "preload": preload, "create": create, "update": update };
 }
