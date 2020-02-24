@@ -4,8 +4,8 @@ var menuState = {
     var start = game.add.text(25, 25, 'Press S to start', {font: '25px Ariel', fill: '#ffffff' });
     var skey = game.input.keyboard.addKey(Phaser.Keyboard.W);
     skey.isDown.addOnce(this.start, this);
-  },
+  }
   start: function() {
     game.state.start('main');
-  },
+  }
 };
