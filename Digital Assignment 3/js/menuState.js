@@ -6,6 +6,6 @@ var menuState = {
     skey.isDown.addOnce(this.start, this);
   },
   start: function() {
-    game.state.start('play');
+    game.state.start('main');
   },
 };
