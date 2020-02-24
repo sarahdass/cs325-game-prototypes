@@ -25,6 +25,7 @@ function make_main_game_state( game )
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         var text = game.add.text( game.world.centerX, 15, "Build something amazing.", style );
+        var skey = game.input.keyboard.addKey(Phaser.Keyboard.W);
         text.anchor.setTo( 0.5, 0.0 );
     }
     
@@ -35,7 +36,12 @@ function make_main_game_state( game )
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
+        
+        skey.isDown.addOnce(this.end, this);
     }
+    function end(){
+        game.state.start('menu');
+    },
     
     return { "preload": preload, "create": create, "update": update };
 }
