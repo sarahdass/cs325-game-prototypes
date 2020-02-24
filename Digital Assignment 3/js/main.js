@@ -47,6 +47,30 @@ function make_main_game_state( game )
 }
 
 
+function endState(game) = {
+
+	create: function () {
+        var name = game.add.text(80, 80, 'End of game', {font: '50px Arial', fill: '#ffffff' });
+        var start = game.add.text(25, 25, 'Press S to go to menu, {font: '25px Arial', fill: '#ffffff' });
+        var skey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+        skey.isDown.addOnce(this.startGame, this);
+    },
+
+	startGame: function (pointer) {
+		this.state.start('menu');
+	}
+};
+function menuState(game) = {
+  create: function(){
+    var name = game.add.text(80, 80, 'Game', { font: '84px Arial', fill: '#fff' });
+    var start = game.add.text(80, game.world.height-80, 'Press S to start', { font: '25px Arial', fill: '#ffffff' });
+    var skey = game.input.keyboard.addKey(Phaser.Keyboard.S);
+    skey.isDown.addOnce(this.start, this);
+  },
+  start: function() {
+    game.state.start('main');
+  }
+};
 window.onload = function() {
     // You might want to start with a template that uses GameStates:
     //     https://github.com/photonstorm/phaser/tree/v2.6.2/resources/Project%20Templates/Basic
@@ -61,9 +85,9 @@ window.onload = function() {
     // All loading functions will typically all be found inside "preload()".
     
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game' );
-    game.state.add('menu', menuState);
+    game.state.add('menu', menuState(game));
     game.state.add( "main", make_main_game_state( game ) );
-    game.state.add('end', endState);
+    game.state.add('end', endState(game));
     
     game.state.start( "menu" );
 };
