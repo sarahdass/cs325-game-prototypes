@@ -1,9 +1,9 @@
 
-BasicGame.endState = function (game) {
+var endState = function (game) {
 
 };
 
-BasicGame.endState. = {
+endState = {
 
 	create: function () {
     var name = game.add.text(80, 80, 'End of game', {font: '50px Arial', fill: '#ffffff' });
