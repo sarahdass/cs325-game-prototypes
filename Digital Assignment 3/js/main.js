@@ -55,8 +55,9 @@ window.onload = function() {
     // All loading functions will typically all be found inside "preload()".
     
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game' );
-    
+    game.state.add('menu', menuState);
     game.state.add( "main", make_main_game_state( game ) );
+    game.state.add('end', endState);
     
-    game.state.start( "main" );
+    game.state.start( "menu" );
 };
