@@ -62,6 +62,7 @@ BasicGame.Game.prototype = {
         // When you click on the sprite, you go back to the MainMenu.
         //this.bouncy.inputEnabled = true;
         //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+        this.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE;
         this.stage.backgroundColor = '#BFF068';
         this.map = this.game.add.tilemap('kitchen');
         
@@ -84,7 +85,7 @@ BasicGame.Game.prototype = {
         
         this.player = this.add.sprite(300, 300, 'girl');
         this.physics.enable(this.player, Phaser.Physics.ARCADE);
-        this.player.body.collideWorldBounds = true
+        this.player.body.collideWorldBounds = true;
         this.player.animations.add('down', [0,1,2,3,], 10, true);
         this.player.animations.add('left', [4, 5, 6, 7], 10, true);
         this.player.animations.add('up', [8, 9, 10, 11], 10, true);
