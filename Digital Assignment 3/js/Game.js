@@ -173,7 +173,7 @@ BasicGame.Game.prototype = {
         }
     }
     
-        function createcats(cat){
+    createcats function(cat){
             this.catnum = this.rnd.integerInRange(1, 3);
             if(this.catnum == 1){
                 this.cat1 = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
@@ -190,7 +190,7 @@ BasicGame.Game.prototype = {
             this.cat.animations.add('left', [4, 5, 6, 7], 10, true);
             this.cat.animations.add('up', [12,13,14,15,16], 10, true);
             this.cat.animations.add('right', [0,1,2,3], 10, true);
-        }
+   }
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Accelerate the 'logo' sprite towards the cursor,
