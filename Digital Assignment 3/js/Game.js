@@ -173,7 +173,7 @@ BasicGame.Game.prototype = {
         }
     }
     
-    createcats function(cat){
+    createcats: function(cat){
             this.catnum = this.rnd.integerInRange(1, 3);
             if(this.catnum == 1){
                 this.cat1 = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
