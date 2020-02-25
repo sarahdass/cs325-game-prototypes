@@ -39,7 +39,7 @@ BasicGame.Game = function (game) {
     this.cat4 = null;
     this.cat5 = null;
     this.catnum = 0;
-    this.createcats();
+    //this.createcats();
     
     
     //this.bouncy = null;
