@@ -107,11 +107,91 @@ BasicGame.Game.prototype = {
         
         
         //create 5 seperate cats:
-        this.cat1 = this.createcats(cat1);
-        this.cat2 = this.createcats(cat2);
-        this.cat3 = this.createcats(cat3);
-        this.cat4 = this.createcats(cat4);
-        this.cat5 = this.createcats(cat5);
+        //cat 1:
+        this.catnum = this.rnd.integerInRange(1, 3);
+            if(this.catnum == 1){
+                this.cat1 = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+            }
+            else if(this.catnum == 2){
+                this.cat1 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+            }
+            else if(this.catnum == 3){
+                this.cat1 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+            }
+            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.cat1.body.collideWorldBounds = true;
+            this.cat1.animations.add('down', [8,9,10,11], 10, true);
+            this.cat1.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat1.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat1.animations.add('right', [0,1,2,3], 10, true);
+        // cat 2
+            this.catnum = this.game.rnd.integerInRange(1, 3);
+            if(this.catnum == 1){
+                this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+            }
+            else if(this.catnum == 2){
+                this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+            }
+            else if(this.catnum == 3){
+                this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+            }
+            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.cat2.body.collideWorldBounds = true;
+            this.cat2.animations.add('down', [8,9,10,11], 10, true);
+            this.cat2.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat2.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat2.animations.add('right', [0,1,2,3], 10, true);
+        //cat 3
+            this.catnum = this.game.rnd.integerInRange(1, 3);
+            if(this.catnum == 1){
+                this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+            }
+            else if(this.catnum == 2){
+                this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+            }
+            else if(this.catnum == 3){
+                this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+            }
+            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.cat3.body.collideWorldBounds = true;
+            this.cat3.animations.add('down', [8,9,10,11], 10, true);
+            this.cat3.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat3.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat3.animations.add('right', [0,1,2,3], 10, true);
+        //cat 4
+            this.catnum = this.game.rnd.integerInRange(1, 3);
+            if(this.catnum == 1){
+                this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+            }
+            else if(this.catnum == 2){
+                this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+            }
+            else if(this.catnum == 3){
+                this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+            }
+            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.cat4.body.collideWorldBounds = true;
+            this.cat4.animations.add('down', [8,9,10,11], 10, true);
+            this.cat4.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat4.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat4.animations.add('right', [0,1,2,3], 10, true);
+        //cat 5
+            this.catnum = this.game.rnd.integerInRange(1, 3);
+            if(this.catnum == 1){
+                this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+            }
+            else if(this.catnum == 2){
+                this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+            }
+            else if(this.catnum == 3){
+                this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+            }
+            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.cat5.body.collideWorldBounds = true;
+            this.cat5.animations.add('down', [8,9,10,11], 10, true);
+            this.cat5.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat5.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat5.animations.add('right', [0,1,2,3], 10, true);
 
     },
 
@@ -200,24 +280,6 @@ BasicGame.Game.prototype = {
         this.state.start('MainMenu');
 
     },
-    createcats: function (cat){
-            this.catnum = this.game.rnd.integerInRange(1, 3);
-            if(this.catnum == 1){
-                this.cat1 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
-            }
-            else if(this.catnum == 2){
-                this.cat = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
-            }
-            else if(this.catnum == 3){
-                this.cat = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
-            }
-            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
-            this.cat.body.collideWorldBounds = true;
-            this.cat.animations.add('down', [8,9,10,11], 10, true);
-            this.cat.animations.add('left', [4, 5, 6, 7], 10, true);
-            this.cat.animations.add('up', [12,13,14,15,16], 10, true);
-            this.cat.animations.add('right', [0,1,2,3], 10, true);
-            return cat;
-     }
+
 
 };
