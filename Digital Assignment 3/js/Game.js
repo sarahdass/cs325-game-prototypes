@@ -172,7 +172,7 @@ BasicGame.Game.prototype = {
                 this.player.body.velocity.x = 0;
                 
         }
-    },
+    }
     
     createcats: function(cat){
             this.catnum = this.rnd.integerInRange(1, 3);
