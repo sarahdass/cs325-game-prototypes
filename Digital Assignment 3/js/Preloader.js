@@ -30,7 +30,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
-		this.load.tilemap('kitchen', 'assets/kitchen..json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.tilemap('kitchen', 'assets/kitchen.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.image('counter98x128', 'assets/counter98x128.png');
 		this.load.image('fridge128x256', 'assets/fridge128x256.png');
 		this.load.image('oven96x128', 'assets/oven96x128.png');
