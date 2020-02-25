@@ -38,8 +38,9 @@ BasicGame.Game = function (game) {
     this.cat3 = null;
     this.cat4 = null;
     this.cat5 = null;
-    this.createcats();
     this.catnum = 0;
+    this.createcats();
+    
     
     //this.bouncy = null;
 };
