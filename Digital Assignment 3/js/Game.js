@@ -31,6 +31,8 @@ BasicGame.Game = function (game) {
     this.layer = null;
     this.sink_layer = null;
     this.floor = null;
+    this.player = null;
+    this.facing = 'left';
     //this.bouncy = null;
 };
 
@@ -78,9 +80,79 @@ BasicGame.Game.prototype = {
         
         this.layer.cameraOffset.set(0, 0);
         this.map.setCollisionBetween(1, 999, true, this.layer);
+        
+        this.player = this.add.sprite(200, 200, 'girl');
+        this.physics.enable(this.player, Phaser.Physics.ARCADE);
+        this.player.body.collideWorldBounds = true
+        this.player.animations.add('down', [0,1,2,3,], 10, true);
+        this.player.animations.add('left', [4, 5, 6, 7], 10, true);
+        this.player.animations.add('up', [8, 9, 10, 11], 10, true);
+        this.player.animations.add('right', [12, 13, 14, 15], 10, true);
+        
+        this.cursors = this.input.keyboard.createCursorKeys();
     },
 
     update: function () {
+        this.physics.arcade.collide(this.player, this.layer);
+        if (this.cursors.left.isDown){
+            this.player.body.velocity.x = -150;
+
+            if (this.facing != 'left')
+            {
+                this.player.animations.play('left');
+                this.facing = 'left';
+            }
+        }
+        else if (cursors.right.isDown)
+        {
+            this.player.body.velocity.x = 150;
+
+            if (this.facing != 'right')
+            {
+                this.player.animations.play('right');
+                this.facing = 'right';
+            }     
+        }
+        else if (cusors.up.isDown){
+            this.player.body.velocity.y = -150;
+            
+            if(this.facing != 'up'){
+               this.player.animation.play('up');
+               this.facing = 'up';
+            }
+        }
+        else if(cursors.down.isDown){
+            this.player.body.velocity.y = 150;
+            if(this.facing != 'down'){
+                this.player.animation.play('down');
+                this.facing = 'down';
+            }
+        }
+        else
+        {
+            if (this.facing != 'idle')
+            {
+                this.player.animations.stop();
+
+                if (this.facing == 'left')
+                {
+                    this.player.frame = 4;
+                }
+                else if(this.facing == 'right')
+                {
+                    this.player.frame = 12;
+                }
+                else if(this.faceing == 'up'){
+                    this.player.frame = 8;
+                }
+                else{
+                    this.player.frame = 0;
+                }
+
+                this.facing = 'idle';
+        }
+    }
+    
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
