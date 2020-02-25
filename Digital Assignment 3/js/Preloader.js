@@ -39,7 +39,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('corner96x160', 'assets/corner96x160.png');
 		this.load.spritesheet('girl', 'assets/girl1536x80.png', 96, 80);
 		this.load.spritesheet('pink', 'assets/pink_cat.png', 64, 64);
-		this.load.spritesheet('grey', 'assets/grey_cat.png', 64, 64);
+		this.load.spritesheet('grey', 'assets/grey_cat .png', 64, 64);
 		this.load.spritesheet('brown', 'assets/brown_cat.png', 64, 64);
 	},
 
