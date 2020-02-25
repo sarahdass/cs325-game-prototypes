@@ -27,6 +27,7 @@ BasicGame.Game = function (game) {
     
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
+    this.map = null;
     this.bouncy = null;
 };
 
@@ -37,25 +38,40 @@ BasicGame.Game.prototype = {
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Create a sprite at the center of the screen using the 'logo' image.
-        this.bouncy = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
+        //this.bouncy = this.game.add.sprite( this.game.world.centerX, this.game.world.centerY, 'logo' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
-        this.bouncy.anchor.setTo( 0.5, 0.5 );
+        //this.bouncy.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
-        this.game.physics.enable( this.bouncy, Phaser.Physics.ARCADE );
+        //this.game.physics.enable( this.bouncy, Phaser.Physics.ARCADE );
         // Make it bounce off of the world bounds.
-        this.bouncy.body.collideWorldBounds = true;
+        //this.bouncy.body.collideWorldBounds = true;
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = this.game.add.text( this.game.world.centerX, 15, "Build something amazing.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+        //var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        //var text = this.game.add.text( this.game.world.centerX, 15, "Build something amazing.", style );
+        //text.anchor.setTo( 0.5, 0.0 );
         
         // When you click on the sprite, you go back to the MainMenu.
-        this.bouncy.inputEnabled = true;
-        this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+        //this.bouncy.inputEnabled = true;
+        //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+        map = game.add.tilemap('kitchen');
+        
+        map.addTilesetImage('corner96x160');
+        map.addTilesetImage('counter98x128');
+        map.addTilesetImage('fridge128x256');
+        map.addTilesetImage('oven96x128');
+        map.addTilesetImage('sink128x96');
+        map.addTilesetImage('Floor Texture');
+        
+        map.setCollisionByExclusion([0, -1]);
+        sink_layer = map.createLayer('sink');
+        layer = map.createLayer('kitchen counter');
+        floor = map.createLayer('Tile Layer 1');
+        layer.cameraOffset.set(0, 0);
+        map.setCollisionBetween(1, 999, true, layer);
     },
 
     update: function () {
