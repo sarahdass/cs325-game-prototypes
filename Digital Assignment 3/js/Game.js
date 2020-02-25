@@ -103,7 +103,7 @@ BasicGame.Game.prototype = {
                 this.facing = 'left';
             }
         }
-        else if (cursors.right.isDown)
+        else if (this.cursors.right.isDown)
         {
             this.player.body.velocity.x = 150;
 
@@ -113,7 +113,7 @@ BasicGame.Game.prototype = {
                 this.facing = 'right';
             }     
         }
-        else if (cusors.up.isDown){
+        else if (this.cursors.up.isDown){
             this.player.body.velocity.y = -150;
             
             if(this.facing != 'up'){
@@ -121,7 +121,7 @@ BasicGame.Game.prototype = {
                this.facing = 'up';
             }
         }
-        else if(cursors.down.isDown){
+        else if(this.cursors.down.isDown){
             this.player.body.velocity.y = 150;
             if(this.facing != 'down'){
                 this.player.animation.play('down');
