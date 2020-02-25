@@ -70,9 +70,11 @@ BasicGame.Game.prototype = {
         this.map.addTilesetImage('Floor Texture');
         
         this.map.setCollisionByExclusion([0, -1]);
-        this.sink_layer = this.map.createLayer('sink');
-        this.layer = this.map.createLayer('kitchen counter');
         this.floor = this.map.createLayer('Tile Layer 1');
+        this.layer = this.map.createLayer('kitchen counter');
+        this.sink_layer = this.map.createLayer('sink');
+        
+        
         this.layer.cameraOffset.set(0, 0);
         this.map.setCollisionBetween(1, 999, true, this.layer);
     },
