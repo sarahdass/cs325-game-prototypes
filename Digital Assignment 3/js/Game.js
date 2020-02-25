@@ -171,7 +171,7 @@ BasicGame.Game.prototype = {
                 this.player.body.velocity.x = 0;
                 
         }
-    }
+    },
     
     createcats: function(cat){
             this.catnum = this.rnd.integerInRange(1, 3);
@@ -190,7 +190,7 @@ BasicGame.Game.prototype = {
             this.cat.animations.add('left', [4, 5, 6, 7], 10, true);
             this.cat.animations.add('up', [12,13,14,15,16], 10, true);
             this.cat.animations.add('right', [0,1,2,3], 10, true);
-   }
+   },
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Accelerate the 'logo' sprite towards the cursor,
@@ -199,7 +199,6 @@ BasicGame.Game.prototype = {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
-    },
 
     quitGame: function () {
 
