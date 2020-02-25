@@ -35,7 +35,8 @@ BasicGame.Preloader.prototype = {
 		this.load.image('fridge128x256', 'fridge128x256.png');
 		this.load.image('oven96x128', 'oven96x128.png');
 		this.load.image('sink128x96', 'sink128x96.png');
-		this.load.image('fridge128x256', 'fridge128x256.png');
+		this.load.image('Floor Texture', 'Floor Texture.JPG');
+		this.load.image('corner96x160', 'corner96x160.png');
 	},
 
 	create: function () {
