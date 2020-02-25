@@ -37,6 +37,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('sink128x96', 'assets/sink128x96.png');
 		this.load.image('Floor Texture', 'assets/Floor Texture.JPG');
 		this.load.image('corner96x160', 'assets/corner96x160.png');
+		this.load.spritesheet.('girl', 'assets/girl1536x80.png');
 	},
 
 	create: function () {
