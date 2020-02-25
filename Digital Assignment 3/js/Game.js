@@ -159,7 +159,25 @@ BasicGame.Game.prototype = {
         }
     }
     
-
+        function createcat(cat){
+            this.catnum = this.rnd.integerInRange(1, 3);
+            if(this.catnum == 1){
+                this.cat = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+            }
+            else if(this.catnum == 2){
+                this.cat = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+            }
+            else if(this.catnum == 3){
+                this.cat = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+            }
+            this.physics.enable(this.cat, Phaser.Physics.ARCADE);
+            this.cat.body.collideWorldBounds = true;
+            this.cat.animations.add('down', [8,9,10,11], 10, true);
+            this.cat.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat.animations.add('right', [0,1,2,3], 10, true);
+            this.num_cats++;
+        }
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Accelerate the 'logo' sprite towards the cursor,
