@@ -104,11 +104,11 @@ BasicGame.Game.prototype = {
         
         
         //create 5 seperate cats:
-        this.cat1.add( function() { this.createcats(); }, this );
-        this.cat2.add( function() { this.createcats(); }, this );
-        this.cat3.add( function() { this.createcats(); }, this );
-        this.cat4.add( function() { this.createcats(); }, this );
-        this.cat5.add( function() { this.createcats(); }, this );
+        this.cat1 = this.add( function() { this.createcats(); }, this );
+        this.cat2 = this.add( function() { this.createcats(); }, this );
+        this.cat3 = this.add( function() { this.createcats(); }, this );
+        this.cat4 = this.add( function() { this.createcats(); }, this );
+        this.cat5 = this.add( function() { this.createcats(); }, this );
 
     },
 
@@ -214,6 +214,7 @@ BasicGame.Game.prototype = {
             this.cat.animations.add('left', [4, 5, 6, 7], 10, true);
             this.cat.animations.add('up', [12,13,14,15,16], 10, true);
             this.cat.animations.add('right', [0,1,2,3], 10, true);
+            return cat;
      }
 
 };
