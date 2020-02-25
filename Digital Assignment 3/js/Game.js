@@ -117,14 +117,14 @@ BasicGame.Game.prototype = {
             this.player.body.velocity.y = -150;
             
             if(this.facing != 'up'){
-               this.player.animation.play('up');
+               this.player.animations.play('up');
                this.facing = 'up';
             }
         }
         else if(this.cursors.down.isDown){
             this.player.body.velocity.y = 150;
             if(this.facing != 'down'){
-                this.player.animation.play('down');
+                this.player.animations.play('down');
                 this.facing = 'down';
             }
         }
