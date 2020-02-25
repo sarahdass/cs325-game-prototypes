@@ -84,7 +84,7 @@ BasicGame.Game.prototype = {
         
         // When you click on the sprite, you go back to the MainMenu.
         //this.bouncy.inputEnabled = true;
-        //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+        this.add( function() { this.quitGame(); }, this );
         this.add( function() {this.createcats(); }, this);
         this.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE;
         this.stage.backgroundColor = '#BFF068';
@@ -189,7 +189,7 @@ BasicGame.Game.prototype = {
                 this.player.body.velocity.x = 0;
                 
         }
-    }
+    },
     
     
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -201,7 +201,7 @@ BasicGame.Game.prototype = {
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
 
-    /*quitGame: function () {
+    quitGame: function () {
 
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
@@ -209,6 +209,6 @@ BasicGame.Game.prototype = {
         //  Then let's go back to the main menu.
         this.state.start('MainMenu');
 
-    }*/
+    }
 
 };
