@@ -38,6 +38,7 @@ BasicGame.Game = function (game) {
     this.cat3 = null;
     this.cat4 = null;
     this.cat5 = null;
+    this.createcats();
     
     //this.bouncy = null;
 };
@@ -104,7 +105,7 @@ BasicGame.Game.prototype = {
         
         
         //create 5 seperate cats:
-        this.cat1 = this.add( function() { this.createcats(); }, this );
+        this.cat1 = this.createcats(cat1);
         this.cat2 = this.add( function() { this.createcats(); }, this );
         this.cat3 = this.add( function() { this.createcats(); }, this );
         this.cat4 = this.add( function() { this.createcats(); }, this );
