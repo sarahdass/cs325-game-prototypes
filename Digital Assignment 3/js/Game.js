@@ -60,21 +60,21 @@ BasicGame.Game.prototype = {
         // When you click on the sprite, you go back to the MainMenu.
         //this.bouncy.inputEnabled = true;
         //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
-        map = this.add.tilemap('kitchen');
+        this.map = this.add.tilemap('kitchen');
         
-        map.addTilesetImage('corner96x160');
-        map.addTilesetImage('counter98x128');
-        map.addTilesetImage('fridge128x256');
-        map.addTilesetImage('oven96x128');
-        map.addTilesetImage('sink128x96');
-        map.addTilesetImage('Floor Texture');
+        this.map.addTilesetImage('corner96x160');
+        this.map.addTilesetImage('counter98x128');
+        this.map.addTilesetImage('fridge128x256');
+        this.map.addTilesetImage('oven96x128');
+        this.map.addTilesetImage('sink128x96');
+        this.map.addTilesetImage('Floor Texture');
         
-        map.setCollisionByExclusion([0, -1]);
-        sink_layer = map.createLayer('sink');
-        layer = map.createLayer('kitchen counter');
-        floor = map.createLayer('Tile Layer 1');
-        layer.cameraOffset.set(0, 0);
-        map.setCollisionBetween(1, 999, true, layer);
+        this.map.setCollisionByExclusion([0, -1]);
+        this.sink_layer = map.createLayer('sink');
+        this.layer = map.createLayer('kitchen counter');
+        this.floor = map.createLayer('Tile Layer 1');
+        this.layer.cameraOffset.set(0, 0);
+        this.map.setCollisionBetween(1, 999, true, layer);
     },
 
     update: function () {
