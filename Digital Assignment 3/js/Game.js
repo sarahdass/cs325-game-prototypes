@@ -33,6 +33,12 @@ BasicGame.Game = function (game) {
     this.floor = null;
     this.player = null;
     this.facing = 'left';
+    this.cat1 = null;
+    this.cat2 = null;
+    this.cat3 = null;
+    this.cat4 = null;
+    this.cat5 = null;
+    
     //this.bouncy = null;
 };
 
@@ -92,6 +98,14 @@ BasicGame.Game.prototype = {
         this.player.animations.add('right', [12, 13, 14, 15], 10, true);
         
         this.cursors = this.input.keyboard.createCursorKeys();
+        
+        
+        //create 5 seperate cats:
+            this.createcats(this.cat1);
+            this.createcats(this.cat2);
+            this.createcats(this.cat3);
+            this.createcats(this.cat4);
+            this.createcats(this.cat5);
     },
 
     update: function () {
@@ -159,10 +173,10 @@ BasicGame.Game.prototype = {
         }
     }
     
-        function createcat(cat){
+        function createcats(cat){
             this.catnum = this.rnd.integerInRange(1, 3);
             if(this.catnum == 1){
-                this.cat = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+                this.cat1 = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
             }
             else if(this.catnum == 2){
                 this.cat = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
@@ -170,13 +184,12 @@ BasicGame.Game.prototype = {
             else if(this.catnum == 3){
                 this.cat = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
             }
-            this.physics.enable(this.cat, Phaser.Physics.ARCADE);
+            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
             this.cat.body.collideWorldBounds = true;
             this.cat.animations.add('down', [8,9,10,11], 10, true);
             this.cat.animations.add('left', [4, 5, 6, 7], 10, true);
             this.cat.animations.add('up', [12,13,14,15,16], 10, true);
             this.cat.animations.add('right', [0,1,2,3], 10, true);
-            this.num_cats++;
         }
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
