@@ -28,7 +28,10 @@ BasicGame.Game = function (game) {
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
     this.map = null;
-    this.bouncy = null;
+    this.layer = null;
+    this.sink_layer = null;
+    this.floor = null;
+    //this.bouncy = null;
 };
 
 BasicGame.Game.prototype = {
@@ -83,7 +86,7 @@ BasicGame.Game.prototype = {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
+        //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
     },
 
     quitGame: function () {
