@@ -150,6 +150,9 @@ BasicGame.Game.prototype = {
                 }
 
                 this.facing = 'idle';
+                this.player.body.velocity.y = 0;
+                this.player.body.velocity.x = 0;
+                
         }
     }
     
