@@ -60,7 +60,7 @@ BasicGame.Game.prototype = {
         // When you click on the sprite, you go back to the MainMenu.
         //this.bouncy.inputEnabled = true;
         //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
-        this.map = this.add.tilemap('kitchen');
+        this.map = this.game.add.tilemap('kitchen');
         
         this.map.addTilesetImage('corner96x160');
         this.map.addTilesetImage('counter98x128');
