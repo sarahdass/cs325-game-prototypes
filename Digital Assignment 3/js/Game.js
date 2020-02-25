@@ -79,9 +79,10 @@ BasicGame.Game.prototype = {
         
         
         this.layer.cameraOffset.set(0, 0);
-        this.map.setCollisionBetween(1, 999, true, this.layer);
+        this.layer.resizeWorld();
+        this.map.setCollisionBetween(1, 9999, true, this.layer);
         
-        this.player = this.add.sprite(200, 200, 'girl');
+        this.player = this.add.sprite(300, 300, 'girl');
         this.physics.enable(this.player, Phaser.Physics.ARCADE);
         this.player.body.collideWorldBounds = true
         this.player.animations.add('down', [0,1,2,3,], 10, true);
@@ -93,6 +94,7 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
+
         this.physics.arcade.collide(this.player, this.layer);
         if (this.cursors.left.isDown){
             this.player.body.velocity.x = -150;
@@ -142,7 +144,7 @@ BasicGame.Game.prototype = {
                 {
                     this.player.frame = 12;
                 }
-                else if(this.faceing == 'up'){
+                else if(this.facing == 'up'){
                     this.player.frame = 8;
                 }
                 else{
