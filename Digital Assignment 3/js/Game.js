@@ -189,7 +189,7 @@ BasicGame.Game.prototype = {
                 this.player.body.velocity.x = 0;
                 
         }
-    }
+    },
     
     
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
