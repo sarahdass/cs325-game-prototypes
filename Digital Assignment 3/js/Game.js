@@ -313,7 +313,7 @@ BasicGame.Game.prototype = {
             this.cat.sprite.kill();
             this.cat.think.kill();
             this.num_cats--;
-    }
+    },
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
         // Accelerate the 'logo' sprite towards the cursor,
