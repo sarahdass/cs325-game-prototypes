@@ -38,8 +38,8 @@ BasicGame.Game = function (game) {
         this.wants = wants;
         this.has = has;
         this.think = think;
-        this.sprite = null;
-        this.timer = null;
+        this.sprite = sprite;
+        this.timer = timer;
     };
     this.cat1 = new Cat(null, false, null, null, null);
     this.cat2 = new Cat(null, false, null, null, null);
