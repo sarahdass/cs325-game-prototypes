@@ -35,16 +35,36 @@ BasicGame.Game = function (game) {
     this.player_has = null;
     this.facing = 'left';
     this.catnum = 0;
-    function Cat(wants, has, think, spri, timer,catnum){
+    function Cat(wants, has, think, spri){
             this.x = 0;
             this.y = 0;
             this.wants = wants;
             this.has = has;
             this.think = think;
             this.spri = spri;
-            this.timer = timer;
-            this.catnum = catnum;
-            
+            this.timer = null;
+            this.catnum = 0;
+            this.catnum = game.rnd.integerInRange(1, 3);
+            this.x = game.rnd.integerInRange(200, 500);
+            this.y = game.rnd.integerInRange(700, 750);
+            if(this.catnum == 1){
+            this.spri = game.add.sprite(this.x, this.y, 'pink');
+            }
+            else if(this.catnum == 2){
+                this.spri = game.add.sprite(this.x, this.y, 'grey');        
+            }
+            else if(this.catnum == 3){
+                this.spri = game.add.sprite(this.x, this.y, 'brown');
+            }
+            this.catnum = game.rnd.integerInRange(1,2);
+            if(this.catnum == 1){
+                this.wants = 'red';
+                this.think = this.add.sprite(this.x, this.y-40, 'redfishbubble');
+            }
+            else{
+                this.wants = 'blue';
+                this.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
+            }
 
             this.physics.enable(this.spri, Phaser.Physics.ARCADE);
             this.spri.body.collideWorldBounds = true;
@@ -59,34 +79,17 @@ BasicGame.Game = function (game) {
     };
     this.x = 0;
     this.y = 0;
-    this.spri = null;
-    this.catnum = 0;
-    this.catnum = game.rnd.integerInRange(1, 3);
-    this.x = game.rnd.integerInRange(200, 500);
-    this.y = game.rnd.integerInRange(700, 750);
-    if(this.catnum == 1){
-         this.spri = this.add.sprite(this.x, this.y, 'pink');
-    }
-    else if(this.catnum == 2){
-                this.spri = this.add.sprite(this.x, this.y, 'grey');        
-    }
-    else if(this.catnum == 3){
-                this.spri = this.add.sprite(this.x, this.y, 'brown');
-     }
-    this.catnum = game.rnd.integerInRange(1,2);
-    if(this.catnum == 1){
-          this.wants = 'red';
-          this.think = this.add.sprite(this.x, this.y-40, 'redfishbubble');
-    }
-    else{
-         this.wants = 'blue';
-         this.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
-    }
-    this.cat1 = new Cat(wants, false, think, spri, null,0);
-    this.cat2 = new Cat(wants, false, think, spri, null,0);
+    
+    this.cat1 = null;
+    this.cat1_wants = null;
+    this.cat1_has = false;
+    this.cat1_think = null;
+    this.cat1_spri = null;
+    this.cat1 = new Cat(this.cat1_wants, this.cat1_has, this.cat1_think, this.cat1_spri);
+    /*this.cat2 = new Cat(wants, false, think, spri, null,0);
     this.cat3 = new Cat(wants, false, think, spri, null,0);
     this.cat4 = new Cat(wants, false, think, spri, null,0);
-    this.cat5 = new Cat(wants, false, think, spri, null,0);
+    this.cat5 = new Cat(wants, false, think, spri, null,0);*/
 
 
     
