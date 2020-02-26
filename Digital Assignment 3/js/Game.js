@@ -250,7 +250,7 @@ BasicGame.Game.prototype = {
         }
 
     },
-    collect: function(this.player, this.fish){
+    collect: function(player, fish){
         if(this.player_has == null && this.fish == this.redfish){
             this.player_has = 'redfish';
             this.fish.kill();
@@ -262,7 +262,7 @@ BasicGame.Game.prototype = {
             this.bluefishthere = false;
         }
     },
-    feed: function(this.player, this.cat){
+    feed: function(player, Cat cat){
         if(this.player_has == this.cat.wants){
             this.cat.has == true;
             this.player.has == null;
@@ -274,7 +274,7 @@ BasicGame.Game.prototype = {
             this.angrycat(cat);
         }
     },
-    makecat: function(this.cat){
+    makecat: function(Cat cat){
             this.catnum = this.game.rnd.integerInRange(1, 3);
             this.x = this.rnd.integerInRange(200, 500);
             this.y = this.rnd.integerInRange(700, 750);
@@ -307,7 +307,7 @@ BasicGame.Game.prototype = {
             this.catnum = this.rnd.integerInRange(10000, 60000);
             this.cat.timer.loop(this.catnum, this.angrycat(cat), this);
     },
-    angrycat: function(this.cat){
+    angrycat: function(Cat cat){
             this.cat.sprite.animations.play('right');
             this.cat.sprite.body.velocity.x(400);
             this.cat.sprite.kill();
