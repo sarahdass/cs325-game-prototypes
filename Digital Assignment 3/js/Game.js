@@ -45,10 +45,10 @@ BasicGame.Game = function (game) {
             this.timer = timer;
             this.catnum = catnum;
             this.catnum = game.rnd.integerInRange(1, 3);
-            this.x = this.rnd.integerInRange(200, 500);
-            this.y = this.rnd.integerInRange(700, 750);
+            this.x = game.rnd.integerInRange(200, 500);
+            this.y = game.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
-                this.spri = this.add.sprite(this.x, this.y, 'pink');
+                this.spri = game.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
                 this.spri = this.add.sprite(this.x, this.y, 'grey');
@@ -56,7 +56,7 @@ BasicGame.Game = function (game) {
             else if(this.catnum == 3){
                 this.spri = this.add.sprite(this.x, this.y, 'brown');
             }
-            this.catnum = this.rnd.integerInRange(1,2);
+            this.catnum = game.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.wants = 'red';
                 this.think = this.add.sprite(this.x, this.y-40, 'redfishbubble');
@@ -72,9 +72,9 @@ BasicGame.Game = function (game) {
             this.spri.animations.add('up', [12,13,14,15,16], 10, true);
             this.spri.animations.add('right', [0,1,2,3], 10, true);
         
-            this.timer = this.time.create(false);
-            this.catnum = this.rnd.integerInRange(10000, 60000);
-            this.timer.loop(this.catnum, this.angrycat(cat), this);
+            this.timer = game.time.create(false);
+            this.catnum = game.rnd.integerInRange(10000, 60000);
+            this.timer.loop(this.catnum, this.angrycat(spri), this);
     };
     this.x = 0;
     this.y = 0;
@@ -157,11 +157,11 @@ BasicGame.Game.prototype = {
 
         
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.makecat(this.cat1, this.cat1.spri);
+        /*this.makecat(this.cat1, this.cat1.spri);
         this.makecat(this.cat2, this.cat2.spri);
         this.makecat(this.cat3, this.cat3.spri);
         this.makecat(this.cat4, this.cat4.spri);
-        this.makecat(this.cat5, this.cat5.spri);
+        this.makecat(this.cat5, this.cat5.spri);*/
         
         
         // fish
@@ -314,15 +314,15 @@ BasicGame.Game.prototype = {
             
         }
         else if((this.player_has != this.cat.wants) && this.cat.has == false){
-            this.angrycat(cat);
+            this.angrycat(cat.spri, cat.think);
         }
     },
 
-    angrycat: function(cat){
-            this.cat.spri.animations.play('right');
-            this.cat.spri.body.velocity.x(400);
-            this.cat.spri.kill();
-            this.cat.think.kill();
+    angrycat: function(spri,think){
+            this.spri.animations.play('right');
+            this.spri.body.velocity.x(400);
+            this.spri.kill();
+            this.think.kill();
             this.num_cats--;
     },
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
