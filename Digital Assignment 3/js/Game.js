@@ -55,10 +55,10 @@ BasicGame.Game = function (game) {
     this.redfishthere = true;
     this.bluefishthere = true;
     this.num_cats = 5;
-    function makecat();
+    /*function makecat();
     function angrycat();
     function feed();
-    function collect();
+    function collect();*/
     //this.createcats();
     
     
