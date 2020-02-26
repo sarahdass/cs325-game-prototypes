@@ -48,7 +48,7 @@ BasicGame.Game = function (game) {
             this.x = game.rnd.integerInRange(200, 500);
             this.y = game.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
-                this.spri = game.add.sprite(this.x, this.y, 'pink');
+                this.spri = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
                 this.spri = this.add.sprite(this.x, this.y, 'grey');
@@ -78,9 +78,7 @@ BasicGame.Game = function (game) {
     };
     this.x = 0;
     this.y = 0;
-    this.catnum = game.rnd.integerInRange(1, 3);
-    this.x = this.rnd.integerInRange(200, 500);
-    this.y = this.rnd.integerInRange(700, 750);
+
     this.cat1 = new Cat(null, false, null, null, null,0);
     this.cat2 = new Cat(null, false, null, null, null,0);
     this.cat3 = new Cat(null, false, null, null,null,0);
