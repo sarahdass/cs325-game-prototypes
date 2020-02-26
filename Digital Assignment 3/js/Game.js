@@ -48,24 +48,24 @@ BasicGame.Game = function (game) {
             this.x = game.rnd.integerInRange(200, 500);
             this.y = game.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
-                this.spri = this.add.sprite(this.x, this.y, 'pink');
+                this.spri = game.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.spri = this.add.sprite(this.x, this.y, 'grey');
+                this.spri = game.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.spri = this.add.sprite(this.x, this.y, 'brown');
+                this.spri = game.add.sprite(this.x, this.y, 'brown');
             }
             this.catnum = game.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.wants = 'red';
-                this.think = this.add.sprite(this.x, this.y-40, 'redfishbubble');
+                this.think = game.add.sprite(this.x, this.y-40, 'redfishbubble');
             }
             else{
                 this.wants = 'blue';
-                this.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
+                this.think = game.add.sprite(this.x, this.y-40, 'bluefishbubble');
             }
-            this.physics.enable(this.cat.sprite, Phaser.Physics.ARCADE);
+            this.physics.enable(this.spri, Phaser.Physics.ARCADE);
             this.spri.body.collideWorldBounds = true;
             this.spri.animations.add('down', [8,9,10,11], 10, true);
             this.spri.animations.add('left', [4, 5, 6, 7], 10, true);
