@@ -41,6 +41,10 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('pink', 'assets/pink_cat.png', 64, 64);
 		this.load.spritesheet('grey', 'assets/grey_cat .png', 64, 64);
 		this.load.spritesheet('brown', 'assets/brown_cat.png', 64, 64);
+		this.load.image('redfish', 'assets/redfish.png');
+		this.load.image('bluefish', 'assets/FishBlue.png');
+		this.load.image('redfishbubble', 'assets/redfishbubble.png');
+		this.load.image('bluefishbubble', 'assets/bluefishbubble.png');
 	},
 
 	create: function () {
