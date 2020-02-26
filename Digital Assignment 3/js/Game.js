@@ -61,6 +61,8 @@ BasicGame.Game = function (game) {
     this.cat5_think = null;
     
     this.catnum = 0;
+    this.x = 0;
+    this.y = 0;
     //this.createcats();
     
     
@@ -131,21 +133,25 @@ BasicGame.Game.prototype = {
         //create 5 seperate cats:
         //cat 1:
         this.catnum = this.rnd.integerInRange(1, 3);
+        this.x = this.rnd.integerInRange(300, 750);
+        this.y = this.rnd.integerInRange(300, 750);
             if(this.catnum == 1){
-                this.cat1 = this.add.sprite(this.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+                this.cat1 = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat1 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+                this.cat1 = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat1 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+                this.cat1 = this.add.sprite(this.x, this.y, 'brown');
             }
             this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.cat1_wants = 'red';
+                this.cat1_think = this.add.sprite(this.x, this.y+60, 'redfishbubble');
             }
             else{
                 this.cat1_wants = 'blue';
+                this.cat1_think = this.add.sprite(this.x, this.y+60, 'bluefishbubble');
             }
             this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
             this.cat1.body.collideWorldBounds = true;
@@ -155,21 +161,25 @@ BasicGame.Game.prototype = {
             this.cat1.animations.add('right', [0,1,2,3], 10, true);
         // cat 2
             this.catnum = this.game.rnd.integerInRange(1, 3);
+            this.x = this.rnd.integerInRange(300, 750);
+            this.y = this.rnd.integerInRange(300, 750);
             if(this.catnum == 1){
-                this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+                this.cat2 = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+                this.cat2 = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+                this.cat2 = this.add.sprite(this.x, this.y, 'brown');
             }
             this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.cat2_wants = 'red';
+                this.cat2_think = this.add.sprite(this.x, this.y+60, 'redfishbubble');
             }
             else{
                 this.cat2_wants = 'blue';
+                this.cat2_think = this.add.sprite(this.x, this.y+60, 'bluefishbubble');
             }
             this.physics.enable(this.cat2, Phaser.Physics.ARCADE);
             this.cat2.body.collideWorldBounds = true;
@@ -179,20 +189,25 @@ BasicGame.Game.prototype = {
             this.cat2.animations.add('right', [0,1,2,3], 10, true);
         //cat 3
             this.catnum = this.game.rnd.integerInRange(1, 3);
+            this.x = this.rnd.integerInRange(300, 750);
+            this.y = this.rnd.integerInRange(300, 750);
             if(this.catnum == 1){
-                this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+                this.cat3 = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+                this.cat3 = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+                this.cat3 = this.add.sprite(this.x, this.y, 'brown');
             }
+            this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.cat3_wants = 'red';
+                this.cat3_think = this.add.sprite(this.x, this.y+60, 'redfishbubble');
             }
             else{
                 this.cat3_wants = 'blue';
+                this.cat3_think = this.add.sprite(this.x, this.y+60, 'bluefishbubble');
             }
             this.physics.enable(this.cat3, Phaser.Physics.ARCADE);
             this.cat3.body.collideWorldBounds = true;
@@ -202,20 +217,25 @@ BasicGame.Game.prototype = {
             this.cat3.animations.add('right', [0,1,2,3], 10, true);
         //cat 4
             this.catnum = this.game.rnd.integerInRange(1, 3);
+            this.x = this.rnd.integerInRange(300, 750);
+            this.y = this.rnd.integerInRange(300, 750);
             if(this.catnum == 1){
-                this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+                this.cat4 = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+                this.cat4 = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+                this.cat4 = this.add.sprite(this.x, this.y, 'brown');
             }
+            this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.cat4_wants = 'red';
+                this.cat4_think = this.add.sprite(this.x, this.y+60, 'redfishbubble');
             }
             else{
                 this.cat4_wants = 'blue';
+                this.cat4_think = this.add.sprite(this.x, this.y+60, 'bluefishbubble');
             }
             this.physics.enable(this.cat4, Phaser.Physics.ARCADE);
             this.cat4.body.collideWorldBounds = true;
@@ -225,20 +245,25 @@ BasicGame.Game.prototype = {
             this.cat4.animations.add('right', [0,1,2,3], 10, true);
         //cat 5
             this.catnum = this.game.rnd.integerInRange(1, 3);
+            this.x = this.rnd.integerInRange(300, 750);
+            this.y = this.rnd.integerInRange(300, 750);
             if(this.catnum == 1){
-                this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'pink');
+                this.cat5 = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'grey');
+                this.cat5 = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
+                this.cat5 = this.add.sprite(this.x, this.y, 'brown');
             }
+            this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
                 this.cat5_wants = 'red';
+                this.cat5_think = this.add.sprite(this.x, this.y+60, 'redfishbubble');
             }
             else{
                 this.cat5_wants = 'blue';
+                this.cat5_think = this.add.sprite(this.x, this.y+60, 'bluefishbubble');
             }
             this.physics.enable(this.cat5, Phaser.Physics.ARCADE);
             this.cat5.body.collideWorldBounds = true;
