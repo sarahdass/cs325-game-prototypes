@@ -34,12 +34,12 @@ BasicGame.Game = function (game) {
     this.player = null;
     this.player_has = null;
     this.facing = 'left';
-    function Cat(wants, has, think, sprite,timer){
+    function Cat(wants, has, think, sprite, timer){
         this.wants = wants;
         this.has = has;
         this.think = think;
-        this.sprite = null
-        this.timer = null
+        this.sprite = null;
+        this.timer = null;
     };
     this.cat1 = new Cat(null, false, null, null, null);
     this.cat2 = new Cat(null, false, null, null, null);
