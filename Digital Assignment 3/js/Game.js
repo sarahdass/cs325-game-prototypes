@@ -55,6 +55,10 @@ BasicGame.Game = function (game) {
     this.redfishthere = true;
     this.bluefishthere = true;
     this.num_cats = 5;
+    function makecat();
+    function angrycat();
+    function feed();
+    function collect();
     //this.createcats();
     
     
@@ -114,11 +118,11 @@ BasicGame.Game.prototype = {
 
         
         this.cursors = this.input.keyboard.createCursorKeys();
-        makecat(cat1);
-        makecat(cat2);
-        makecat(cat3);
-        makecat(cat4);
-        makecat(cat5);
+        this.makecat(this.cat1);
+        this.makecat(this.cat2);
+        this.makecat(this.cat3);
+        this.makecat(this.cat4);
+        this.makecat(this.cat5);
         
         
         // fish
