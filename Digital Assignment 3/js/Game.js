@@ -48,13 +48,13 @@ BasicGame.Game = function (game) {
             this.x = game.rnd.integerInRange(200, 500);
             this.y = game.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
-            this.spri = game.add.sprite(this.x, this.y, 'pink');
+				this.spri = this.game.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.spri = game.add.sprite(this.x, this.y, 'grey');        
+                this.spri = this.game.add.sprite(this.x, this.y, 'grey');        
             }
             else if(this.catnum == 3){
-                this.spri = game.add.sprite(this.x, this.y, 'brown');
+                this.spri = this.game.add.sprite(this.x, this.y, 'brown');
             }
             this.catnum = game.rnd.integerInRange(1,2);
             if(this.catnum == 1){
