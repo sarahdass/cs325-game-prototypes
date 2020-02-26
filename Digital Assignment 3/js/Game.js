@@ -118,11 +118,11 @@ BasicGame.Game.prototype = {
 
         
         this.cursors = this.input.keyboard.createCursorKeys();
-        this.makecat(this.cat1);
-        this.makecat(this.cat2);
-        this.makecat(this.cat3);
-        this.makecat(this.cat4);
-        this.makecat(this.cat5);
+        this.makecat(this.cat1, this.cat1.spri);
+        this.makecat(this.cat2, this.cat2.spri);
+        this.makecat(this.cat3, this.cat3.spri);
+        this.makecat(this.cat4, this.cat4.spri);
+        this.makecat(this.cat5, this.cat5.spri);
         
         
         // fish
@@ -278,18 +278,18 @@ BasicGame.Game.prototype = {
             this.angrycat(cat);
         }
     },
-    makecat: function(cat){
+    makecat: function(cat,spri){
             this.catnum = this.game.rnd.integerInRange(1, 3);
             this.x = this.rnd.integerInRange(200, 500);
             this.y = this.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
-                this.cat.spri = this.add.sprite(this.x, this.y, 'pink');
+                this.spri = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat.spri = this.add.sprite(this.x, this.y, 'grey');
+                this.spri = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat.spri = this.add.sprite(this.x, this.y, 'brown');
+                this.spri = this.add.sprite(this.x, this.y, 'brown');
             }
             this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
@@ -301,20 +301,20 @@ BasicGame.Game.prototype = {
                 this.cat.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
             }
             this.physics.enable(this.cat.sprite, Phaser.Physics.ARCADE);
-            this.cat.spri.body.collideWorldBounds = true;
-            this.cat.spri.animations.add('down', [8,9,10,11], 10, true);
-            this.cat.spri.animations.add('left', [4, 5, 6, 7], 10, true);
-            this.cat.spri.animations.add('up', [12,13,14,15,16], 10, true);
-            this.cat.spri.animations.add('right', [0,1,2,3], 10, true);
+            this.spri.body.collideWorldBounds = true;
+            this.spri.animations.add('down', [8,9,10,11], 10, true);
+            this.spri.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.spri.animations.add('up', [12,13,14,15,16], 10, true);
+            this.spri.animations.add('right', [0,1,2,3], 10, true);
         
             this.cat.timer = this.time.create(false);
             this.catnum = this.rnd.integerInRange(10000, 60000);
             this.cat.timer.loop(this.catnum, this.angrycat(cat), this);
     },
-    angrycat: function(cat){
-            this.cat.spri.animations.play('right');
-            this.cat.spri.body.velocity.x(400);
-            this.cat.sprite.kill();
+    angrycat: function(cat, spri){
+            this.spri.animations.play('right');
+            this.spri.body.velocity.x(400);
+            this.spri.kill();
             this.cat.think.kill();
             this.num_cats--;
     },
