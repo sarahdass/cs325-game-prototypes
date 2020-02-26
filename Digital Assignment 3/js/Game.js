@@ -41,7 +41,7 @@ BasicGame.Game = function (game) {
             this.think = think;
             this.spri = spri;
             this.timer = timer;
-            this.catnum = this.game.rnd.integerInRange(1, 3);
+            this.catnum = this.rnd.integerInRange(1, 3);
             this.x = this.rnd.integerInRange(200, 500);
             this.y = this.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
