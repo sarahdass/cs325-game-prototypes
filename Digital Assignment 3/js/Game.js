@@ -34,11 +34,11 @@ BasicGame.Game = function (game) {
     this.player = null;
     this.player_has = null;
     this.facing = 'left';
-    function Cat(wants, has, think, sprite, timer){
+    function Cat(wants, has, think, spri, timer){
         this.wants = wants;
         this.has = has;
         this.think = think;
-        this.sprite = sprite;
+        this.spri = spri;
         this.timer = timer;
     };
     this.cat1 = new Cat(null, false, null, null, null);
@@ -156,11 +156,11 @@ BasicGame.Game.prototype = {
     update: function () {
 
         this.physics.arcade.collide(this.player, this.layer);
-        this.cat1.animations.play('up');
-        this.cat2.animations.play('down');
-        this.cat3.animations.play('up');
-        this.cat4.animations.play('down');
-        this.cat5.animations.play('up');
+        this.cat1.spri.animations.play('up');
+        this.cat2.spri.animations.play('down');
+        this.cat3.spri.animations.play('up');
+        this.cat4.spri.animations.play('down');
+        this.cat5.spri.animations.play('up');
         if (this.cursors.left.isDown){
             this.player.body.velocity.x = -150;
 
@@ -234,19 +234,19 @@ BasicGame.Game.prototype = {
         }
         this.physics.arcade.overlap(this.player, this.redfish, this.collect, null, this);
         this.physics.arcade.overlap(this.player, this.bluefish, this.collect, null, this);
-        if(this.physics.arcade.overlap(this.player, this.cat1.sprite) == true){
+        if(this.physics.arcade.overlap(this.player, this.cat1.spri) == true){
             feed(this.player, this.cat1);
         }
-        if(this.physics.arcade.overlap(this.player, this.cat2.sprite) == true){
+        if(this.physics.arcade.overlap(this.player, this.cat2.spri) == true){
             feed(this.player, this.cat2);
         }
-        if(this.physics.arcade.overlap(this.player, this.cat3.sprite) == true){
+        if(this.physics.arcade.overlap(this.player, this.cat3.spri) == true){
             feed(this.player, this.cat3);
         }
-        if(this.physics.arcade.overlap(this.player, this.cat4.sprite) == true){
+        if(this.physics.arcade.overlap(this.player, this.cat4.spri) == true){
             feed(this.player, this.cat4);
         }
-        if(this.physics.arcade.overlap(this.player, this.cat5.sprite) == true){
+        if(this.physics.arcade.overlap(this.player, this.cat5.spri) == true){
             feed(this.player, this.cat5);
         }
         if(this.numcats == 0){
@@ -283,13 +283,13 @@ BasicGame.Game.prototype = {
             this.x = this.rnd.integerInRange(200, 500);
             this.y = this.rnd.integerInRange(700, 750);
             if(this.catnum == 1){
-                this.cat.sprite = this.add.sprite(this.x, this.y, 'pink');
+                this.cat.spri = this.add.sprite(this.x, this.y, 'pink');
             }
             else if(this.catnum == 2){
-                this.cat.sprite = this.add.sprite(this.x, this.y, 'grey');
+                this.cat.spri = this.add.sprite(this.x, this.y, 'grey');
             }
             else if(this.catnum == 3){
-                this.cat.sprite = this.add.sprite(this.x, this.y, 'brown');
+                this.cat.spri = this.add.sprite(this.x, this.y, 'brown');
             }
             this.catnum = this.rnd.integerInRange(1,2);
             if(this.catnum == 1){
@@ -301,19 +301,19 @@ BasicGame.Game.prototype = {
                 this.cat.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
             }
             this.physics.enable(this.cat.sprite, Phaser.Physics.ARCADE);
-            this.cat.sprite.body.collideWorldBounds = true;
-            this.cat.sprite.animations.add('down', [8,9,10,11], 10, true);
-            this.cat.sprite.animations.add('left', [4, 5, 6, 7], 10, true);
-            this.cat.sprite.animations.add('up', [12,13,14,15,16], 10, true);
-            this.cat.sprite.animations.add('right', [0,1,2,3], 10, true);
+            this.cat.spri.body.collideWorldBounds = true;
+            this.cat.spri.animations.add('down', [8,9,10,11], 10, true);
+            this.cat.spri.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.cat.spri.animations.add('up', [12,13,14,15,16], 10, true);
+            this.cat.spri.animations.add('right', [0,1,2,3], 10, true);
         
             this.cat.timer = this.time.create(false);
             this.catnum = this.rnd.integerInRange(10000, 60000);
             this.cat.timer.loop(this.catnum, this.angrycat(cat), this);
     },
     angrycat: function(cat){
-            this.cat.sprite.animations.play('right');
-            this.cat.sprite.body.velocity.x(400);
+            this.cat.spri.animations.play('right');
+            this.cat.spri.body.velocity.x(400);
             this.cat.sprite.kill();
             this.cat.think.kill();
             this.num_cats--;
