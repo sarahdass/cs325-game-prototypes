@@ -82,6 +82,11 @@ BasicGame.Game = function (game) {
     this.y = 0;
     
     this.cat1 = null;
+	this.cat2 = null;
+	this.cat3 = null;
+	this.cat4= null;
+	this.cat5 = null;
+	
     this.cat1_wants = null;
     this.cat1_has = false;
     this.cat1_think = null;
@@ -191,7 +196,13 @@ BasicGame.Game.prototype = {
         this.player.animations.add('left', [4, 5, 6, 7], 10, true);
         this.player.animations.add('up', [8, 9, 10, 11], 10, true);
         this.player.animations.add('right', [12, 13, 14, 15], 10, true);
-		//this.cat1 = new Cat();
+		this.cat1 = new Cat();
+		this.cat2 = new Cat();
+		this.cat3 = new Cat();
+		this.cat4 = new Cat();
+		this.cat5 = new Cat();
+
+		
         this.cat1.timer.start();
         this.cat2.timer.start();
         this.cat3.timer.start();
