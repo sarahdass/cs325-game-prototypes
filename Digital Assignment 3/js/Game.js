@@ -35,12 +35,15 @@ BasicGame.Game = function (game) {
     this.player_has = null;
     this.facing = 'left';
     this.catnum = 0;
-    function Cat(wants, has, think, spri, timer){
+    function Cat(wants, has, think, spri, timer,catnum){
+            this.x = 0;
+            this.y = 0;
             this.wants = wants;
             this.has = has;
             this.think = think;
             this.spri = spri;
             this.timer = timer;
+            this.catnum = catnum;
             this.catnum = this.rnd.integerInRange(1, 3);
             this.x = this.rnd.integerInRange(200, 500);
             this.y = this.rnd.integerInRange(700, 750);
@@ -73,11 +76,11 @@ BasicGame.Game = function (game) {
             this.catnum = this.rnd.integerInRange(10000, 60000);
             this.timer.loop(this.catnum, this.angrycat(cat), this);
     };
-    this.cat1 = new Cat(null, false, null, null, null);
-    this.cat2 = new Cat(null, false, null, null, null);
-    this.cat3 = new Cat(null, false, null, null,null);
-    this.cat4 = new Cat(null, false, null, null,null);
-    this.cat5 = new Cat(null, false, null, null,null);
+    this.cat1 = new Cat(null, false, null, null, null,0);
+    this.cat2 = new Cat(null, false, null, null, null,0);
+    this.cat3 = new Cat(null, false, null, null,null,0);
+    this.cat4 = new Cat(null, false, null, null,null,0);
+    this.cat5 = new Cat(null, false, null, null,null,0);
 
     this.x = 0;
     this.y = 0;
