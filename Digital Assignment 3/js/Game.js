@@ -35,18 +35,19 @@ BasicGame.Game = function (game) {
     this.player_has = null;
     this.facing = 'left';
     this.catnum = 0;
-    function Cat(wants, has, think, spri){
+    function Cat(){
             this.x = 0;
             this.y = 0;
-            this.wants = wants;
-            this.has = has;
-            this.think = think;
-            this.spri = spri;
+            this.wants = null;
+            this.has = false;
+            this.think = null;
+            this.spri = null;
             this.timer = null;
             this.catnum = 0;
             this.catnum = game.rnd.integerInRange(1, 3);
             this.x = game.rnd.integerInRange(200, 500);
             this.y = game.rnd.integerInRange(700, 750);
+			this.spri = this.add.sprite(this.x, this.y, 'pink');
             if(this.catnum == 1){
 				this.spri = this.game.add.sprite(this.x, this.y, 'pink');
             }
@@ -85,7 +86,9 @@ BasicGame.Game = function (game) {
     this.cat1_has = false;
     this.cat1_think = null;
     this.cat1_spri = null;
-    this.cat1 = new Cat(this.cat1_wants, this.cat1_has, this.cat1_think, this.cat1_spri);
+	this.spri = null;
+	//this.spri = this.add.sprite(this.x, this.y, 'pink');
+    //this.cat1 = new Cat();//this.cat1_wants, this.cat1_has, this.cat1_think, this.cat1_spri);
     /*this.cat2 = new Cat(wants, false, think, spri, null,0);
     this.cat3 = new Cat(wants, false, think, spri, null,0);
     this.cat4 = new Cat(wants, false, think, spri, null,0);
@@ -188,6 +191,7 @@ BasicGame.Game.prototype = {
         this.player.animations.add('left', [4, 5, 6, 7], 10, true);
         this.player.animations.add('up', [8, 9, 10, 11], 10, true);
         this.player.animations.add('right', [12, 13, 14, 15], 10, true);
+		//this.cat1 = new Cat();
         this.cat1.timer.start();
         this.cat2.timer.start();
         this.cat3.timer.start();
