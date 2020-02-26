@@ -34,19 +34,51 @@ BasicGame.Game = function (game) {
     this.player = null;
     this.player_has = null;
     this.facing = 'left';
+    this.catnum = 0;
     function Cat(wants, has, think, spri, timer){
-        this.wants = wants;
-        this.has = has;
-        this.think = think;
-        this.spri = spri;
-        this.timer = timer;
+            this.wants = wants;
+            this.has = has;
+            this.think = think;
+            this.spri = spri;
+            this.timer = timer;
+            this.catnum = this.game.rnd.integerInRange(1, 3);
+            this.x = this.rnd.integerInRange(200, 500);
+            this.y = this.rnd.integerInRange(700, 750);
+            if(this.catnum == 1){
+                this.spri = this.add.sprite(this.x, this.y, 'pink');
+            }
+            else if(this.catnum == 2){
+                this.spri = this.add.sprite(this.x, this.y, 'grey');
+            }
+            else if(this.catnum == 3){
+                this.spri = this.add.sprite(this.x, this.y, 'brown');
+            }
+            this.catnum = this.rnd.integerInRange(1,2);
+            if(this.catnum == 1){
+                this.wants = 'red';
+                this.think = this.add.sprite(this.x, this.y-40, 'redfishbubble');
+            }
+            else{
+                this.wants = 'blue';
+                this.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
+            }
+            this.physics.enable(this.cat.sprite, Phaser.Physics.ARCADE);
+            this.spri.body.collideWorldBounds = true;
+            this.spri.animations.add('down', [8,9,10,11], 10, true);
+            this.spri.animations.add('left', [4, 5, 6, 7], 10, true);
+            this.spri.animations.add('up', [12,13,14,15,16], 10, true);
+            this.spri.animations.add('right', [0,1,2,3], 10, true);
+        
+            this.timer = this.time.create(false);
+            this.catnum = this.rnd.integerInRange(10000, 60000);
+            this.timer.loop(this.catnum, this.angrycat(cat), this);
     };
     this.cat1 = new Cat(null, false, null, null, null);
     this.cat2 = new Cat(null, false, null, null, null);
     this.cat3 = new Cat(null, false, null, null,null);
     this.cat4 = new Cat(null, false, null, null,null);
     this.cat5 = new Cat(null, false, null, null,null);
-    this.catnum = 0;
+
     this.x = 0;
     this.y = 0;
     
@@ -278,43 +310,11 @@ BasicGame.Game.prototype = {
             this.angrycat(cat);
         }
     },
-    makecat: function(cat,spri){
-            this.catnum = this.game.rnd.integerInRange(1, 3);
-            this.x = this.rnd.integerInRange(200, 500);
-            this.y = this.rnd.integerInRange(700, 750);
-            if(this.catnum == 1){
-                this.spri = this.add.sprite(this.x, this.y, 'pink');
-            }
-            else if(this.catnum == 2){
-                this.spri = this.add.sprite(this.x, this.y, 'grey');
-            }
-            else if(this.catnum == 3){
-                this.spri = this.add.sprite(this.x, this.y, 'brown');
-            }
-            this.catnum = this.rnd.integerInRange(1,2);
-            if(this.catnum == 1){
-                this.cat.wants = 'red';
-                this.cat.think = this.add.sprite(this.x, this.y-40, 'redfishbubble');
-            }
-            else{
-                this.cat.wants = 'blue';
-                this.cat.think = this.add.sprite(this.x, this.y-40, 'bluefishbubble');
-            }
-            this.physics.enable(this.cat.sprite, Phaser.Physics.ARCADE);
-            this.spri.body.collideWorldBounds = true;
-            this.spri.animations.add('down', [8,9,10,11], 10, true);
-            this.spri.animations.add('left', [4, 5, 6, 7], 10, true);
-            this.spri.animations.add('up', [12,13,14,15,16], 10, true);
-            this.spri.animations.add('right', [0,1,2,3], 10, true);
-        
-            this.cat.timer = this.time.create(false);
-            this.catnum = this.rnd.integerInRange(10000, 60000);
-            this.cat.timer.loop(this.catnum, this.angrycat(cat), this);
-    },
-    angrycat: function(cat, spri){
-            this.spri.animations.play('right');
-            this.spri.body.velocity.x(400);
-            this.spri.kill();
+
+    angrycat: function(cat){
+            this.cat.spri.animations.play('right');
+            this.cat.spri.body.velocity.x(400);
+            this.cat.spri.kill();
             this.cat.think.kill();
             this.num_cats--;
     },
