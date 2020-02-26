@@ -262,7 +262,7 @@ BasicGame.Game.prototype = {
             this.bluefishthere = false;
         }
     },
-    feed: function(player, Cat cat){
+    feed: function(player, cat){
         if(this.player_has == this.cat.wants){
             this.cat.has == true;
             this.player.has == null;
@@ -274,7 +274,7 @@ BasicGame.Game.prototype = {
             this.angrycat(cat);
         }
     },
-    makecat: function(Cat cat){
+    makecat: function(cat){
             this.catnum = this.game.rnd.integerInRange(1, 3);
             this.x = this.rnd.integerInRange(200, 500);
             this.y = this.rnd.integerInRange(700, 750);
@@ -307,7 +307,7 @@ BasicGame.Game.prototype = {
             this.catnum = this.rnd.integerInRange(10000, 60000);
             this.cat.timer.loop(this.catnum, this.angrycat(cat), this);
     },
-    angrycat: function(Cat cat){
+    angrycat: function(cat){
             this.cat.sprite.animations.play('right');
             this.cat.sprite.body.velocity.x(400);
             this.cat.sprite.kill();
