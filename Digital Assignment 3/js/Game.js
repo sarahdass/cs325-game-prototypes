@@ -35,7 +35,7 @@ BasicGame.Game = function (game) {
     this.player_has = null;
     this.facing = 'left';
     this.catnum = 0;
-    function Cat(wants, has, think, spri, timer,catnum){
+    function Cat(wants, has, think, timer,catnum){
             this.x = 0;
             this.y = 0;
             this.wants = wants;
@@ -79,7 +79,7 @@ BasicGame.Game = function (game) {
     this.x = 0;
     this.y = 0;
 
-    this.cat1 = new Cat(null, false, null, null, null,0);
+    this.cat1 = new Cat(null, false, null, null,0);
     this.cat2 = new Cat(null, false, null, null, null,0);
     this.cat3 = new Cat(null, false, null, null,null,0);
     this.cat4 = new Cat(null, false, null, null,null,0);
