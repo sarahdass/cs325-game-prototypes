@@ -135,7 +135,7 @@ BasicGame.Game.prototype = {
             else if(this.catnum == 3){
                 this.cat2 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
             }
-            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.physics.enable(this.cat2, Phaser.Physics.ARCADE);
             this.cat2.body.collideWorldBounds = true;
             this.cat2.animations.add('down', [8,9,10,11], 10, true);
             this.cat2.animations.add('left', [4, 5, 6, 7], 10, true);
@@ -152,7 +152,7 @@ BasicGame.Game.prototype = {
             else if(this.catnum == 3){
                 this.cat3 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
             }
-            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.physics.enable(this.cat3, Phaser.Physics.ARCADE);
             this.cat3.body.collideWorldBounds = true;
             this.cat3.animations.add('down', [8,9,10,11], 10, true);
             this.cat3.animations.add('left', [4, 5, 6, 7], 10, true);
@@ -169,7 +169,7 @@ BasicGame.Game.prototype = {
             else if(this.catnum == 3){
                 this.cat4 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
             }
-            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.physics.enable(this.cat4, Phaser.Physics.ARCADE);
             this.cat4.body.collideWorldBounds = true;
             this.cat4.animations.add('down', [8,9,10,11], 10, true);
             this.cat4.animations.add('left', [4, 5, 6, 7], 10, true);
@@ -186,7 +186,7 @@ BasicGame.Game.prototype = {
             else if(this.catnum == 3){
                 this.cat5 = this.add.sprite(this.game.rnd.integerInRange(400, 750), this.rnd.integerInRange(400, 750), 'brown');
             }
-            this.physics.enable(this.cat1, Phaser.Physics.ARCADE);
+            this.physics.enable(this.cat5, Phaser.Physics.ARCADE);
             this.cat5.body.collideWorldBounds = true;
             this.cat5.animations.add('down', [8,9,10,11], 10, true);
             this.cat5.animations.add('left', [4, 5, 6, 7], 10, true);
