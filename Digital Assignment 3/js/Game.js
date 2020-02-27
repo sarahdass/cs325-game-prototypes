@@ -65,6 +65,8 @@ BasicGame.Game = function (game) {
     this.bluefishthere = true;
     this.num_cats = 4;
 	this.timenum = 0;
+
+	//this.stateText.setVisible(false);
     /*function makecat();
     function angrycat();
     function feed();
@@ -78,6 +80,11 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
     create: function () {
+
+			this.music = this.add.audio('music');
+			this.music.play();
+			this.purr = this.add.audio('purr');
+			this.hiss = this.add.audio('angrymeow');
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
         
@@ -106,7 +113,9 @@ BasicGame.Game.prototype = {
         //this.add( function() {this.createcats(); }, this);
 		this.scoreString = 'Score : ';
 		this.scoreText = this.add.text(10, 10, this.scoreString + this.score, { font: '34px Arial', fill: '#81217E' });
-
+		this.stateText = this.add.text(this.world.centerX,this.world.centerY,this.scoreString + this.score+'\nClick Girl To Quit', { font: '64px Arial', fill: '#81217E' });
+		this.stateText.anchor.setTo(0.5, 0.5);
+		this.stateText.visible = false;
 		function Cat(spri,has,wants, think,timer){
             this.wants = wants;
             this.has = false;
@@ -450,9 +459,11 @@ BasicGame.Game.prototype = {
 				this.cat1.has = true;
 				this.player_has = null;
 				if(this.num == 2){
+					this.hiss.play();
 					this.score -= 500;
 				}
 				else{
+					this.purr.play();
 					this.score += 1000 - this.timenum;
 				}
 				this.scoreText.text = this.scoreString + this.score;
@@ -465,9 +476,11 @@ BasicGame.Game.prototype = {
 				this.cat2.has = true;
 				this.player_has = null;
 				if(this.num == 2){
+					this.hiss.play();
 					this.score -= 500;
 				}
 				else{
+					this.purr.play();
 					this.score += 1000 - this.timenum;
 				}
 				this.scoreText.text = this.scoreString + this.score;
@@ -480,9 +493,11 @@ BasicGame.Game.prototype = {
 				this.cat3.has = true;
 				this.player_has = null;
 				if(this.num == 2){
+					this.hiss.play();
 					this.score -= 500;
 				}
 				else{
+					this.purr.play();
 					this.score += 1000  - this.timenum;
 				}
 				this.scoreText.text = this.scoreString + this.score;
@@ -494,9 +509,11 @@ BasicGame.Game.prototype = {
 				this.cat4.has = true;
 				this.player_has = null;
 				if(this.num == 2){
+					this.hiss.play();
 					this.score -= 500;
 				}
 				else{
+					this.purr.play();
 					this.score += 1000 - this.timenum;
 				}
 				this.scoreText.text = this.scoreString + this.score;
@@ -515,8 +532,8 @@ BasicGame.Game.prototype = {
             feed(this.player, this.cat5);
         }*/
         if(this.num_cats == 0){
-			this.stateText = this.add.text(this.world.centerX,this.world.centerY,this.scoreString + this.score+'\nClick Girl To Quit', { font: '64px Arial', fill: '#81217E' });
-			this.stateText.anchor.setTo(0.5, 0.5);
+
+			this.stateText.visible = true;
 			
 			this.player.inputEnabled = true;
 			this.player.events.onInputDown.add( function() { this.quitGame(); }, this )
@@ -541,15 +558,27 @@ BasicGame.Game.prototype = {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
-
+	//end State
     quitGame: function () {
-
+		this.cat1.spri.kill();
+		this.cat2.spri.kill();
+		this.cat3.spri.kill();
+		this.cat4.spri.kill();
+		this.cat1.think.kill();
+		this.cat2.think.kill();
+		this.cat3.think.kill();
+		this.cat4.think.kill();
+		this.redfish.kill();
+		this.bluefish.kill();
+		this.player.kill();
+		this.score = 0;
+		this.stateText.visible = false;
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
         //  Then let's go back to the main menu.
 		
-        this.state.start('endState');
+        this.state.start('MainMenu');
 
     },
 

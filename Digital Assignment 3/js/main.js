@@ -12,6 +12,7 @@ window.onload = function() {
 	game.state.add('Preloader', BasicGame.Preloader);
 	game.state.add('MainMenu', BasicGame.MainMenu);
 	game.state.add('Game', BasicGame.Game);
+	game.state.add('endState', endState);
 
 	//	Now start the Boot state.
 	game.state.start('Boot');
