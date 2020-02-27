@@ -113,9 +113,7 @@ BasicGame.Game.prototype = {
         //this.add( function() {this.createcats(); }, this);
 		this.scoreString = 'Score : ';
 		this.scoreText = this.add.text(10, 10, this.scoreString + this.score, { font: '34px Arial', fill: '#81217E' });
-		this.stateText = this.add.text(this.world.centerX,this.world.centerY,this.scoreString + this.score+'\nClick Girl To Quit', { font: '64px Arial', fill: '#81217E' });
-		this.stateText.anchor.setTo(0.5, 0.5);
-		this.stateText.visible = false;
+		this.stateText = this.add.text(this.world.centerX,this.world.centerY,'', { font: '64px Arial', fill: '#81217E' });
 		function Cat(spri,has,wants, think,timer){
             this.wants = wants;
             this.has = false;
@@ -533,10 +531,11 @@ BasicGame.Game.prototype = {
         }*/
         if(this.num_cats == 0){
 
-			this.stateText.visible = true;
-			
+			this.scoreText = this.add.text(10, 10, this.scoreString + this.score +'\nClick girl to quit', { font: '34px Arial', fill: '#81217E' });
 			this.player.inputEnabled = true;
-			this.player.events.onInputDown.add( function() { this.quitGame(); }, this )
+
+			this.player.events.onInputDown.add( function() { this.quitGame(this.stateText); }, this )
+			this.player.events.onInputDown
         }
 
     },
@@ -559,7 +558,7 @@ BasicGame.Game.prototype = {
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
 	//end State
-    quitGame: function () {
+    quitGame: function (stateText) {
 		this.cat1.spri.kill();
 		this.cat2.spri.kill();
 		this.cat3.spri.kill();
@@ -572,7 +571,8 @@ BasicGame.Game.prototype = {
 		this.bluefish.kill();
 		this.player.kill();
 		this.score = 0;
-		this.stateText.visible = false;
+		stateText.visible = false;
+		this.music.stop();
         //  Here you should destroy anything you no longer need.
         //  Stop music, delete sprites, purge caches, free resources, all that good stuff.
 

@@ -15,6 +15,7 @@ BasicGame.Preloader.prototype = {
 
 		//	These are the assets we loaded in Boot.js
 		//	A nice sparkly background and a loading progress bar
+		
 		this.background = this.add.sprite(0, 0, 'preloaderBackground');
 		this.preloadBar = this.add.sprite(300, 400, 'preloaderBar');
 
@@ -32,7 +33,8 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('music', ['assets/Catsong.mp3']);
 		this.load.audio('purr', ['assets/purr.mp3']);
 		this.load.audio('angrymeow', ['assets/angrymeow.mp3']);
-		//	+ lots of other required assets here
+		
+		//	+ lots of other required assets here'
         this.load.image( 'logo', 'assets/phaser.png' );
 		this.load.tilemap('kitchen', 'assets/kitchen.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.image('counter98x128', 'assets/counter98x128.png');
