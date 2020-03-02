@@ -32,9 +32,9 @@ BasicGame.Preloader.prototype = {
         this.load.image( 'logo', 'assets/phaser.png' );
 		
 		this.load.spritesheet('chicken', 'assets/chicken.png', 64, 64);
-		this.load.image('crate', 'assets/cratetex.png'
-		this.load.image('bridge1', 'assets/BridgeTiles.png');
-		this.load.image('bridge2', 'assets/dark bridgetiles.png');
+		this.load.image('crate', 'assets/cratetex.png');
+		this.load.image('BridgeTiles', 'assets/BridgeTiles.png');
+		this.load.image('dark_bridgetiles', 'assets/dark_bridgetiles.png');
 		this.load.tilemap('barn', 'assets/barn.json', null, Phaser.Tilemap.TILED_JSON);
 	},
 

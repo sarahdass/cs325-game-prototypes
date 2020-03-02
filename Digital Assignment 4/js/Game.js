@@ -28,11 +28,31 @@ BasicGame.Game = function (game) {
     // For optional clarity, you can initialize
     // member variables here. Otherwise, you will do it in create().
     this.bouncy = null;
+	this.facing = 'left';
 };
 
 BasicGame.Game.prototype = {
 
     create: function () {
+		
+		
+		//add tile map
+		this.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE;
+        this.stage.backgroundColor = '#BFF068';
+        this.map = this.game.add.tilemap('barn');
+        this.map.addTilesetImage('BridgeTiles');
+        this.map.addTilesetImage('dark_bridgetiles');
+        this.map.setCollisionByExclusion([0, -1]);
+		this.bg = this.map.createLayer('background');
+		this.back = this.map.createLayer('back beams');
+		this.middle = this.map.createLayer('middle beams');
+		this.front = this.map.createLayer('front beams');
+        this.floor = this.map.createLayer('foreground');
+        this.layer = this.map.createLayer('Tile Layer 1');
+        this.layer.cameraOffset.set(0, 0);
+        this.layer.resizeWorld();
+        this.map.setCollisionBetween(1, 9999, true, this.layer);
+		
 		//add player
 		this.player = this.add.sprite(300, 300, 'chicken');
         this.physics.enable(this.player, Phaser.Physics.ARCADE);
@@ -42,30 +62,87 @@ BasicGame.Game.prototype = {
         this.player.animations.add('up', [0,1,2], 10, true);
         this.player.animations.add('right', [3,4,5], 10, true);
 		
-		//add tile map
-		this.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE;
-        this.stage.backgroundColor = '#BFF068';
-        this.map = this.game.add.tilemap('barn');
-        this.map.addTilesetImage('bridge1');
-        this.map.addTilesetImage('bridge2');
-        this.map.setCollisionByExclusion([0, -1]);
-        this.floor = this.map.createLayer('foreground');
-        this.layer = this.map.createLayer('Tile Layer 1');
-        this.front = this.map.createLayer('front beams');
-		this.middle = this.map.createLayer('middle beams');
-		this.back = this.map.creatLayer('back beams');
-		this.bg = this.map.createLayer('background');
-        this.layer.cameraOffset.set(0, 0);
-        this.layer.resizeWorld();
-        this.map.setCollisionBetween(1, 9999, true, this.layer);
+		this.box1 = this.add.sprite(400, 300, 'crate');
+		this.physics.enable(this.box1, Phaser.Physics.ARCADE);
+		this.box1.body.drag.setTo(600, 0);
+		//this.box1.body.setFriction(.7, 0);
+		this.box1.body.collideWorldBounds = true;
+		//this.box1.body.bounce.set(1.25);
+		this.box2 = this.add.sprite(100, 100, 'crate');
+		this.physics.enable(this.box2, Phaser.Physics.ARCADE);
+		this.box2.body.drag.setTo(600, 0);
+		this.box2.body.collideWorldBounds = true;
 		
+		this.box3 = this.add.sprite(600, 400, 'crate');
+		this.physics.enable(this.box3, Phaser.Physics.ARCADE);
+		this.box3.body.drag.setTo(600, 0);
+		this.box3.body.collideWorldBounds = true;
 		
+		this.cursors = this.input.keyboard.createCursorKeys();
+		this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		
+		this.physics.arcade.gravity.y = 500;
         //this.bouncy.inputEnabled = true;
         //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
     },
 
     update: function () {
 		this.physics.arcade.collide(this.player, this.layer);
+		this.physics.arcade.collide(this.box1, this.player);
+		this.physics.arcade.collide(this.box2, this.player);
+		this.physics.arcade.collide(this.box3, this.player);
+		this.physics.arcade.collide(this.box1, this.layer);
+		this.physics.arcade.collide(this.box2, this.layer);
+		this.physics.arcade.collide(this.box3, this.layer);
+		    this.player.body.velocity.x = 0;
+
+		if (this.cursors.left.isDown)
+		{
+			this.player.body.velocity.x = -150;
+
+			if (this.facing != 'left')
+			{
+				this.player.animations.play('left');
+				this.facing = 'left';
+			}
+		}
+		else if (this.cursors.right.isDown)
+		{
+			this.player.body.velocity.x = 150;
+
+			if (this.facing != 'right')
+			{
+				this.player.animations.play('right');
+				this.facing = 'right';
+			}
+		}
+
+		else{
+			if(this.facing != 'idle')
+			{
+				this.player.animations.stop();
+
+				if (this.facing == 'left')
+				{
+					this.player.frame = 9;
+				}
+				else
+				{
+					this.player.frame = 3;
+				}
+				this.facing = 'idle';
+			}
+		}
+		if (this.cursors.up.isDown && (this.player.body.onFloor() 
+			|| this.physics.arcade.overlap(this.box1, this.player)
+		|| this.physics.arcade.overlap(this.box2, this.player)
+		|| this.physics.arcade.overlap(this.box3, this.player)))// && this.time.now > this.jumpTimer)// )
+		{
+			this.player.frame = 0;
+			this.player.body.velocity.y = -350;
+			this.jumpTimer = this.time.now + 750;
+		}
+
 		
     },
 
