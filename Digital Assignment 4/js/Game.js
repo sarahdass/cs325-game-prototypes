@@ -34,7 +34,8 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
     create: function () {
-		
+		this.music = this.add.audio('levelone');
+		this.music.play();
 		
 		//add tile map
 		this.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE;
@@ -54,7 +55,7 @@ BasicGame.Game.prototype = {
         this.map.setCollisionBetween(1, 9999, true, this.layer);
 		
 		//add player
-		this.player = this.add.sprite(300, 300, 'chicken');
+		this.player = this.add.sprite(200, 400, 'chicken');
         this.physics.enable(this.player, Phaser.Physics.ARCADE);
         this.player.body.collideWorldBounds = true;
         this.player.animations.add('down', [6,7,8], 10, true);
@@ -78,6 +79,10 @@ BasicGame.Game.prototype = {
 		this.box3.body.drag.setTo(600, 0);
 		this.box3.body.collideWorldBounds = true;
 		
+		this.star = this.add.sprite(725, 0, 'star');
+		this.physics.enable(this.star, Phaser.Physics.ARCADE);
+		this.star.body.collideWorldBounds = true;
+		
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		
@@ -94,7 +99,11 @@ BasicGame.Game.prototype = {
 		this.physics.arcade.collide(this.box1, this.layer);
 		this.physics.arcade.collide(this.box2, this.layer);
 		this.physics.arcade.collide(this.box3, this.layer);
-		    this.player.body.velocity.x = 0;
+		this.physics.arcade.collide(this.star, this.layer);
+		//this.physics.arcade.collide(this.star, this.player);
+		this.player.body.velocity.x = 0;
+		
+		
 
 		if (this.cursors.left.isDown)
 		{
@@ -143,11 +152,18 @@ BasicGame.Game.prototype = {
 			this.jumpTimer = this.time.now + 750;
 		}
 
+		if(this.physics.arcade.overlap(this.star, this.player) == true){
+			this.quitGame();
+		}
 		
     },
 
     quitGame: function () {
-
+		this.music.stop();
+		this.player.kill();
+		this.box1.kill();
+		this.box2.kill();
+		this.box3.kill();
         this.state.start('MainMenu');
 
     }

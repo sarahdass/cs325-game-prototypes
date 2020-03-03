@@ -28,6 +28,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('titlePage', 'assets/title.jpg');
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
+		this.load.audio('levelone', 'assets/Casual game track.mp3');
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 		
@@ -36,6 +37,7 @@ BasicGame.Preloader.prototype = {
 		this.load.image('BridgeTiles', 'assets/BridgeTiles.png');
 		this.load.image('dark_bridgetiles', 'assets/dark_bridgetiles.png');
 		this.load.tilemap('barn', 'assets/barn.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.image('star', 'assets/Blue Star.png');
 	},
 
 	create: function () {
