@@ -30,6 +30,8 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 		this.load.audio('levelone', 'assets/Casual game track.mp3');
 		this.load.audio('menu', 'assets/gone_fishin_by_memoraphile_CC0.mp3');
+		//this.load.image('rainbow', 'assets/rainbow1.jpg');
+		this.load.image('mountain', 'assets/mountain.jpg');
 		//	+ lots of other required assets here
         this.load.image( 'logo', 'assets/phaser.png' );
 		
