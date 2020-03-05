@@ -1,6 +1,6 @@
 "use strict";
 
-GameStates.makeGame = function (game) {
+GameStates.makeLevel2 = function(game) {
 
     //  When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
     /*
@@ -29,31 +29,38 @@ GameStates.makeGame = function (game) {
     // member variables here. Otherwise, you will do it in create().
     this.bouncy = null;
 	this.facing = 'left';
-
-	return{
+	return {
 
 		create: function () {
 			this.music = this.add.audio('levelone');
 			this.music.play();
-		
-		//add tile map
+			
+			//add tile map
 			this.physics.arcade.sortDirection = Phaser.Physics.Arcade.SORT_NONE;
-			this.stage.backgroundColor = '#BFF068';
-			this.map = this.game.add.tilemap('barn');
+			this.stage.backgroundColor = '#B0F8F2';
+			this.map = this.game.add.tilemap('outside');
+			this.map.addTilesetImage('grass');
 			this.map.addTilesetImage('BridgeTiles');
-			this.map.addTilesetImage('dark_bridgetiles');
+			
+			this.bg_trees = this.map.createLayer('bg trees');
+			this.bg_bg = this.map.createLayer('bg bg');
+			this.layer11 = this.map.createLayer('Tile Layer 11');
+			this.background = this.map.createLayer('background');
+			this.rocks = this.map.createLayer('rocks');
+			this.trees = this.map.createLayer('trees');
+			this.flower = this.map.createLayer('flower');
+			this.bg= this.map.createLayer('bg');
+			this.layer = this.map.createLayer('walking layer');
+			this.vines = this.map.createLayer('vines');
+			this.grass = this.map.createLayer('grass');
+			
+			
 			this.map.setCollisionByExclusion([0, -1]);
-			this.bg = this.map.createLayer('background');
-			this.back = this.map.createLayer('back beams');
-			this.middle = this.map.createLayer('middle beams');
-			this.front = this.map.createLayer('front beams');
-			this.floor = this.map.createLayer('foreground');
-			this.layer = this.map.createLayer('Tile Layer 1');
 			this.layer.cameraOffset.set(0, 0);
 			this.layer.resizeWorld();
 			this.map.setCollisionBetween(1, 9999, true, this.layer);
-		
-		//add player
+			
+			//add player
 			this.player = this.add.sprite(200, 400, 'chicken');
 			this.physics.enable(this.player, Phaser.Physics.ARCADE);
 			this.player.body.collideWorldBounds = true;
@@ -61,48 +68,49 @@ GameStates.makeGame = function (game) {
 			this.player.animations.add('left', [9,10,11], 10, true);
 			this.player.animations.add('up', [0,1,2], 10, true);
 			this.player.animations.add('right', [3,4,5], 10, true);
-		
-			this.box1 = this.add.sprite(400, 300, 'crate');
+			
+			this.box1 = this.add.sprite(350, 300, 'big_crate');
 			this.physics.enable(this.box1, Phaser.Physics.ARCADE);
 			this.box1.body.drag.setTo(600, 0);
-		//this.box1.body.setFriction(.7, 0);
+			//this.box1.body.setFriction(.7, 0);
 			this.box1.body.collideWorldBounds = true;
-		//this.box1.body.bounce.set(1.25);
-			this.box2 = this.add.sprite(100, 100, 'crate');
+			//this.box1.body.bounce.set(1.25);
+			this.box2 = this.add.sprite(150, 100, 'crate');
 			this.physics.enable(this.box2, Phaser.Physics.ARCADE);
 			this.box2.body.drag.setTo(600, 0);
 			this.box2.body.collideWorldBounds = true;
-		
-			this.box3 = this.add.sprite(600, 400, 'crate');
+			
+			/*this.box3 = this.add.sprite(600, 400, 'crate');
 			this.physics.enable(this.box3, Phaser.Physics.ARCADE);
 			this.box3.body.drag.setTo(600, 0);
-			this.box3.body.collideWorldBounds = true;
-		
+			this.box3.body.collideWorldBounds = true;*/
+			
 			this.star = this.add.sprite(725, 0, 'star');
 			this.physics.enable(this.star, Phaser.Physics.ARCADE);
 			this.star.body.collideWorldBounds = true;
-		
+			
 			this.cursors = this.input.keyboard.createCursorKeys();
 			this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		
+			
 			this.physics.arcade.gravity.y = 500;
-        //this.bouncy.inputEnabled = true;
-        //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
+			//this.bouncy.inputEnabled = true;
+			//this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
 		},
 
 		update: function () {
 			this.physics.arcade.collide(this.player, this.layer);
 			this.physics.arcade.collide(this.box1, this.player);
 			this.physics.arcade.collide(this.box2, this.player);
-			this.physics.arcade.collide(this.box3, this.player);
+			this.physics.arcade.collide(this.box1, this.box2);
+			//this.physics.arcade.collide(this.box3, this.player);
 			this.physics.arcade.collide(this.box1, this.layer);
 			this.physics.arcade.collide(this.box2, this.layer);
-			this.physics.arcade.collide(this.box3, this.layer);
+			//this.physics.arcade.collide(this.box3, this.layer);
 			this.physics.arcade.collide(this.star, this.layer);
 			//this.physics.arcade.collide(this.star, this.player);
 			this.player.body.velocity.x = 0;
 			
-		
+			
 
 			if (this.cursors.left.isDown)
 			{
@@ -112,17 +120,17 @@ GameStates.makeGame = function (game) {
 				{
 					this.player.animations.play('left');
 					this.facing = 'left';
-				}	
+				}
 			}
 			else if (this.cursors.right.isDown)
-			{	
+			{
 				this.player.body.velocity.x = 150;
 
 				if (this.facing != 'right')
 				{
 					this.player.animations.play('right');
 					this.facing = 'right';
-				}	
+				}
 			}
 
 			else{
@@ -143,8 +151,8 @@ GameStates.makeGame = function (game) {
 			}
 			if (this.cursors.up.isDown && (this.player.body.onFloor() 
 				|| this.physics.arcade.overlap(this.box1, this.player)
-				|| this.physics.arcade.overlap(this.box2, this.player)
-				|| this.physics.arcade.overlap(this.box3, this.player)))// && this.time.now > this.jumpTimer)// )
+			|| this.physics.arcade.overlap(this.box2, this.player)))
+			//|| this.physics.arcade.overlap(this.box3, this.player)))// && this.time.now > this.jumpTimer)// )
 			{
 				this.player.frame = 0;
 				this.player.body.velocity.y = -350;
@@ -154,7 +162,7 @@ GameStates.makeGame = function (game) {
 			if(this.physics.arcade.overlap(this.star, this.player) == true){
 				this.quitGame();
 			}
-		
+			
 		},
 
 		quitGame: function () {
@@ -162,9 +170,9 @@ GameStates.makeGame = function (game) {
 			this.player.kill();
 			this.box1.kill();
 			this.box2.kill();
-			this.box3.kill();
-			this.state.start('Level2');
-	
+			//this.box3.kill();
+			this.state.start('MainMenu');
+
 		}
 
 	};
