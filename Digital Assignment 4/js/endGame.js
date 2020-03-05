@@ -1,16 +1,17 @@
 "use strict";
 
-GameStates.makeMainMenu = function(game) {
+GameStates.makeendGame = function(game) {
 
 	var music = null;
 	var playButton = null;
-	function startGame(pointer) {
+	var stateText = null;
+	function goToMenu(pointer) {
 
 		//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
 		game.music.stop();
 
 		//	And start the actual game
-		game.state.start('Game');
+		game.state.start('MainMenu');
 
 	}
 
@@ -24,10 +25,12 @@ GameStates.makeMainMenu = function(game) {
 
 			game.music = this.add.audio('menu');
 			game.music.play();
-
-			game.add.sprite(0, 0, 'mountain');
-
-			playButton = game.add.button( 303, 400, 'playButton', startGame, this, 'over', 'out', 'down');
+		
+			game.add.sprite(0, 0, 'forest');
+			stateText = game.add.text(game.world.centerX,game.world.centerY,'You Escaped!\nClick to go to the Menu', { font: '40px Arial', fill: '#fff' });
+    stateText.anchor.setTo(0.5, 0.5);
+			game.input.onTap.addOnce(goToMenu, this);
+			//playButton = game.add.button( 303, 400, 'playButton', startGame, this, 'over', 'out', 'down');
 
 		},
 

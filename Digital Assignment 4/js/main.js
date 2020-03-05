@@ -13,7 +13,7 @@ window.onload = function() {
 	game.state.add('MainMenu', GameStates.makeMainMenu(game));
 	game.state.add('Level2', GameStates.makeLevel2(game));
 	game.state.add('Game', GameStates.makeGame(game));
-	
+	game.state.add('endGame', GameStates.makeendGame(game));
 	//	Now start the Boot state.
 	game.state.start('Boot');
 

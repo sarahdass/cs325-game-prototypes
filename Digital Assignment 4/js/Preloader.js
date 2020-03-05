@@ -45,6 +45,7 @@ GameStates.makePreloader = function(game) {
 			game.load.spritesheet('dog', 'assets/dog_brown.png', 136, 80);
 			game.load.tilemap('outside', 'assets/outside.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.image('big_crate', 'assets/big_crate.png');
+			game.load.image('forest', 'assets/forest.png');
 		},	
 
 		create: function () {

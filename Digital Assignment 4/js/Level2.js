@@ -61,7 +61,7 @@ GameStates.makeLevel2 = function(game) {
 			this.map.setCollisionBetween(1, 9999, true, this.layer);
 			
 			//add player
-			this.player = this.add.sprite(200, 400, 'chicken');
+			this.player = this.add.sprite(250, 400, 'chicken');
 			this.physics.enable(this.player, Phaser.Physics.ARCADE);
 			this.player.body.collideWorldBounds = true;
 			this.player.animations.add('down', [6,7,8], 10, true);
@@ -171,7 +171,7 @@ GameStates.makeLevel2 = function(game) {
 			this.box1.kill();
 			this.box2.kill();
 			//this.box3.kill();
-			this.state.start('MainMenu');
+			this.state.start('endGame');
 
 		}
 
