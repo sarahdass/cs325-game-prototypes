@@ -2,10 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Hello! Amaze!</title>
-    <script src="js/phaser.js"></script>
-    <script src="js/main.js"></script>
-
+    <title>Raindrops</title>
+	<script src="js/phaser.min.js"></script>
+	<!-- Boot.js must come first since it creates the BasicGame object
+	that stores all the states. -->
+	<script src="js/Boot.js"></script>
+	<script src="js/Preloader.js"></script>
+	<script src="js/MainMenu.js"></script>
+	<script src="js/endGame.js"></script>
+	<script src="js/Game.js"></script>
+	<script src="js/controls.js"></script>
+	<!-- main.js must come last since it references the other ones. -->
+	<script src="js/main.js"></script>
 <style>
 body
 {

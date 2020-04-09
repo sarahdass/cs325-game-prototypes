@@ -16,10 +16,6 @@ GameStates.makePreloader = function(game) {
 		//	A nice sparkly background and a loading progress bar
 			background = this.add.sprite(0, 0, 'preloaderBackground');
 			preloadBar = this.add.sprite(300, 400, 'preloaderBar');
-
-		//	This sets the preloadBar sprite as a loader sprite.
-		//	What that does is automatically crop the sprite from 0 to full-width
-		//	as the files below are loaded in.
 			game.load.setPreloadSprite(preloadBar);
 
 		//	Here we load the rest of the assets our game needs.
