@@ -64,13 +64,13 @@ GameStates.makeGame = function (game) {
 		
 			this.box1 = this.add.sprite(400, 300, 'crate');
 			this.physics.enable(this.box1, Phaser.Physics.ARCADE);
-			this.box1.body.drag.setTo(600, 0);
+			this.box1.body.drag.setTo(800, 0);
 		//this.box1.body.setFriction(.7, 0);
 			this.box1.body.collideWorldBounds = true;
 		//this.box1.body.bounce.set(1.25);
 			this.box2 = this.add.sprite(100, 100, 'crate');
 			this.physics.enable(this.box2, Phaser.Physics.ARCADE);
-			this.box2.body.drag.setTo(600, 0);
+			this.box2.body.drag.setTo(800, 0);
 			this.box2.body.collideWorldBounds = true;
 		
 			this.box3 = this.add.sprite(600, 400, 'crate');
@@ -85,7 +85,7 @@ GameStates.makeGame = function (game) {
 			this.cursors = this.input.keyboard.createCursorKeys();
 			this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		
-			this.physics.arcade.gravity.y = 500;
+			this.physics.arcade.gravity.y = 600;
         //this.bouncy.inputEnabled = true;
         //this.bouncy.events.onInputDown.add( function() { this.quitGame(); }, this );
 		},
