@@ -8,7 +8,7 @@ GameStates.makecontrols = function(game) {
 	function goToMenu(pointer) {
 
 		//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
-		game.music.stop();
+		//game.music.stop();
 
 		//	And start the actual game
 		game.state.start('MainMenu');
@@ -23,7 +23,7 @@ GameStates.makecontrols = function(game) {
 		//	Here all we're doing is playing some music and adding a picture and button
 		//	Naturally I expect you to do something significantly better :)
 
-			game.music = this.add.audio('menu');
+			//game.music = this.add.audio('menu');
 			game.music.play();
 		
 			game.add.sprite(0, 0, 'controls');

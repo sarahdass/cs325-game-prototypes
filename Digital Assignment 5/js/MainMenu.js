@@ -27,7 +27,7 @@ GameStates.makeMainMenu = function(game) {
 		//	Here all we're doing is playing some music and adding a picture and button
 		//	Naturally I expect you to do something significantly better :)
 
-			game.music = this.add.audio('titleMusic');
+			game.music = this.add.audio('menuMusic');
 			game.music.play();
 
 			game.add.sprite(0, 0, 'menu');

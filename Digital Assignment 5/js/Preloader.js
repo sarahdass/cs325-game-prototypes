@@ -9,7 +9,7 @@ GameStates.makePreloader = function(game){
 	return {
 
 		preload: function () {
-			background = this.add.sprite(0, 0, 'preloaderBackground');
+			background = this.add.sprite(0, 0, 'leafbg');
 			preloadBar = this.add.sprite(300, 400, 'preloaderBar');
 			game.load.setPreloadSprite(preloadBar);
 			
@@ -21,10 +21,12 @@ GameStates.makePreloader = function(game){
 			game.load.image('endgame', 'assets/endgame.jpg');
 			game.load.image('menu', 'assets/menu.jpg'); 
 			game.load.image('titlePage', 'assets/title.jpg');
+			
 			game.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 			game.load.atlas('controlButton', 'assets/control_button.png', 'assets/play_button.json');
 			game.load.image('controls', 'assets/controls.png');
-			game.load.audio('level1music', ['assets/GameMusic_ForestTheme_24.mp3']);
+			game.load.audio('level1music', ['assets/Troubled Forest.mp3']);
+			game.load.audio('menuMusic', ['assets/forestismagic.mp3']);
 			game.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
 			game.load.image( 'logo', 'assets/phaser.png' );
 		},
@@ -47,7 +49,7 @@ GameStates.makePreloader = function(game){
 			//	If you don't have any music in your game then put the game.state.start line into the create function and delete
 			//	the update function completely.
 			
-			if (this.cache.isSoundDecoded('titleMusic') && ready == false)
+			if (this.cache.isSoundDecoded('menuMusic') && ready == false)
 			{
 				this.ready = true;
 				this.state.start('MainMenu');
