@@ -15,22 +15,25 @@ GameStates.makePreloader = function(game){
 			
 			game.load.spritesheet('girl', 'assets/girl.png', 77, 64);
 			game.load.tilemap('level 1 map', 'assets/level 1.json', null, Phaser.Tilemap.TILED_JSON);
-			game.load.tilemap('level 2 map', 'assets/level 2.json', null, Phaser.Tilemap.TILED_JSON);
+			game.load.tilemap('level 2 map', 'assets/level 2 map.json', null, Phaser.Tilemap.TILED_JSON);
 			game.load.image('level 1', 'assets/level 1.png');
 			game.load.image('level 2', 'assets/level 2.png');
+			game.load.image('sky', 'assets/sky.png');
 			game.load.image('level 2 foreground', 'assets/level 2 foreground.png');
 			game.load.image('star', 'assets/Blue Star.png');
 			game.load.image('box', 'assets/box.jpg');
+			game.load.image('bigbox', 'assets/bigbox.jpg');
 			game.load.image('endgame', 'assets/endgame.jpg');
 			game.load.image('menu', 'assets/menu.jpg'); 
 			game.load.image('titlePage', 'assets/title.jpg');
-			
+			game.load.image('key', 'assets/key.png');
 			game.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 			game.load.atlas('controlButton', 'assets/control_button.png', 'assets/play_button.json');
 			game.load.image('controls', 'assets/controls.png');
 			game.load.audio('level1music', ['assets/Troubled Forest.mp3']);
 			game.load.audio('menuMusic', ['assets/forestismagic.mp3']);
 			game.load.audio('titleMusic', ['assets/Poppers and Prosecco.mp3']);
+			game.load.audio('level2music', ['assets/012_Sirens_in_Darkness.mp3']);
 			game.load.image( 'logo', 'assets/phaser.png' );
 		},
 

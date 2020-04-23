@@ -12,7 +12,7 @@ GameStates.makeMainMenu = function(game) {
 		game.music.stop();
 
 		//	And start the actual game
-		game.state.start('Level 2');
+		game.state.start('Game');
 
 	}
 	function controls(pointer){
